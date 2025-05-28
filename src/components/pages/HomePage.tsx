@@ -193,8 +193,8 @@ const HomePage: React.FC = () => {
                   gap: '4px',
                   color: '#AAAAAA'
                 }}>
-{/*                   <Keyboard style={{width: '16px', height: '16px'}} /> */}
-{/*                   <span style={{fontSize: '0.75rem'}}>Ctrl+K</span> */}
+                  {/* <Keyboard style={{width: '16px', height: '16px'}} /> */}
+                  <span style={{fontSize: '0.75rem'}}></span>
                 </div>
               )}
               <div style={{
