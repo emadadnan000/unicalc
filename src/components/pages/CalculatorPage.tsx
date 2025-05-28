@@ -305,7 +305,7 @@ const CalculatorPage: React.FC = () => {
       case 'Low':
         return 'bg-orange-500';
       case 'Very Low':
-        return 'bg-red-500';
+        return 'text-xs px-1.5 py-0.5 bg-red-500';
       default:
         return 'bg-gray-500';
     }
@@ -433,53 +433,53 @@ const CalculatorPage: React.FC = () => {
       <main className="container mx-auto px-2 sm:px-4 pt-8 pb-12">
         <div className="max-w-[52rem] mx-auto glassmorphic-card p-4 sm:p-8 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] border border-gray-700/30">
           {/* Tabs */}
-          <div className="flex mb-4 sm:mb-8 border-b border-gray-700/50 overflow-x-auto no-scrollbar">
-            <button 
+          <div className="flex items-center space-x-1 mb-4 sm:mb-6">
+            <button
               onClick={() => {setActiveSection('form'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
-              className={`pb-2 sm:pb-3 px-3 sm:px-4 text-xs sm:text-base font-medium transition-all whitespace-nowrap flex items-center gap-1 sm:gap-2 flex-shrink-0 ${
-                activeSection === 'form' && !showTestPattern ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'
-              }`}
+              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${activeSection === 'form' && !showTestPattern && !showFacts && !showMerits ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
             >
-              <Calculator className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-              <span>Calculator</span>
+              <div className="flex items-center gap-1">
+                <Calculator className="h-3 w-3" />
+                <span>Calculator</span>
+              </div>
             </button>
             {aggregate !== null && (
-              <button 
+              <button
                 onClick={() => {setActiveSection('results'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
-                className={`pb-2 sm:pb-3 px-3 sm:px-4 text-xs sm:text-base font-medium transition-all whitespace-nowrap flex items-center gap-1 sm:gap-2 flex-shrink-0 ${
-                  activeSection === 'results' && !showTestPattern ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'
-                }`}
+                className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${activeSection === 'results' ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
               >
-                <TrendingUp className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-                <span>Results</span>
+                <div className="flex items-center gap-1">
+                  <BarChart2 className="h-3 w-3" />
+                  <span>Results</span>
+                </div>
               </button>
             )}
-            <button 
+            <button
               onClick={() => {setShowTestPattern(true); setActiveSection(''); setShowFacts(false); setShowMerits(false);}} 
-              className={`pb-2 sm:pb-3 px-3 sm:px-4 text-xs sm:text-base font-medium transition-all whitespace-nowrap flex items-center gap-1 sm:gap-2 flex-shrink-0 ${
-                showTestPattern ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'
-              }`}
+              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showTestPattern ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
             >
-              <FileText className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-              <span>Pattern</span>
+              <div className="flex items-center gap-1">
+                <FileText className="h-3 w-3" />
+                <span>Pattern</span>
+              </div>
             </button>
-            <button 
+            <button
               onClick={() => {setShowFacts(true); setActiveSection(''); setShowTestPattern(false); setShowMerits(false);}} 
-              className={`pb-2 sm:pb-3 px-3 sm:px-4 text-xs sm:text-base font-medium transition-all whitespace-nowrap flex items-center gap-1 sm:gap-2 flex-shrink-0 ${
-                showFacts ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'
-              }`}
+              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showFacts ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
             >
-              <Star className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-              <span>Facts</span>
+              <div className="flex items-center gap-1">
+                <Star className="h-3 w-3" />
+                <span>Facts</span>
+              </div>
             </button>
-            <button 
+            <button
               onClick={() => {setShowMerits(true); setActiveSection(''); setShowTestPattern(false); setShowFacts(false);}} 
-              className={`pb-2 sm:pb-3 px-3 sm:px-4 text-xs sm:text-base font-medium transition-all whitespace-nowrap flex items-center gap-1 sm:gap-2 flex-shrink-0 ${
-                showMerits ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'
-              }`}
+              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showMerits ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
             >
-              <BarChart2 className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-              <span>Merit</span>
+              <div className="flex items-center gap-1">
+                <TrendingUp className="h-3 w-3" />
+                <span>Merit</span>
+              </div>
             </button>
           </div>
 
@@ -672,37 +672,38 @@ const CalculatorPage: React.FC = () => {
                           {testPattern.name}
                         </h3>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
-                          <div className="bg-midnight-blue/40 p-4 rounded-lg">
-                            <h4 className="text-gray-300 text-sm uppercase tracking-wider mb-3">Format</h4>
-                            <div className="flex justify-between items-center">
-                              <span className="text-white font-medium text-base sm:text-lg">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg">
+                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">Format</h4>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-1 sm:space-y-0">
+                              <span className="text-white font-medium text-sm sm:text-base">
                                 {testPattern.pattern.totalMCQs} MCQs
                               </span>
-                              <span className="text-white font-medium text-base sm:text-lg">
+                              <span className="text-white font-medium text-sm sm:text-base">
                                 {testPattern.pattern.duration}
                               </span>
                             </div>
                           </div>
                           
-                          <div className="bg-midnight-blue/40 p-4 rounded-lg">
-                            <h4 className="text-gray-300 text-sm uppercase tracking-wider mb-3">Total Marks</h4>
-                            <div className="text-white font-medium text-base sm:text-lg">
+                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg">
+                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">Total Marks</h4>
+                            <div className="text-white font-medium text-sm sm:text-base">
                               {testPattern.pattern.totalMarks} Marks
                             </div>
                           </div>
                         </div>
 
                         {testPattern.pattern.subjects.length > 0 && (
-                          <div className="bg-midnight-blue/40 p-4 rounded-lg mb-6">
-                            <h4 className="text-gray-300 text-sm uppercase tracking-wider mb-4">Subject Distribution</h4>
-                            <div className="space-y-4">
-                              <ul className="space-y-3">
+                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg mb-6">
+                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">Subject Distribution</h4>
+                            <div className="space-y-2 sm:space-y-3">
+                              <ul className="space-y-2 sm:space-y-3">
                                 {testPattern.pattern.subjects.map((subject, index) => (
-                                  <li key={index} className="flex items-center">
-                                    <span className="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
-                                    <span className="flex-1">{subject.name}</span>
-                                    <span className="text-gray-300 font-light">{subject.mcqs} MCQs</span>
+                                  <li key={index} className="flex justify-between items-center bg-midnight-blue/60 p-2 sm:p-3 rounded-lg">
+                                    <span className="text-gray-300 text-xs sm:text-sm">{subject.name}</span>
+                                    <span className="text-white font-medium text-xs sm:text-sm bg-electric-blue/20 px-2 py-1 rounded">
+                                      {subject.mcqs} MCQs
+                                    </span>
                                   </li>
                                 ))}
                               </ul>
@@ -711,39 +712,40 @@ const CalculatorPage: React.FC = () => {
                         )}
 
                         {testPattern.pattern.notes && (
-                          <div className="bg-midnight-blue/40 p-4 rounded-lg mb-6">
-                            <h4 className="text-gray-300 text-sm uppercase tracking-wider mb-3">Additional Notes</h4>
-                            <p className="text-white">
+                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">Additional Notes</h4>
+                            <p className="text-gray-200 text-xs sm:text-sm">
                               {testPattern.pattern.notes}
                             </p>
                           </div>
                         )}
                         
-                        <div className="flex flex-row justify-between items-center mt-4 max-w-full">
-                          <div>
-                            {!testPattern.pattern.hasNegativeMarking && (
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4 mt-4 max-w-full">
+                          <div className="flex flex-wrap gap-2">
+                            {!testPattern.pattern.hasNegativeMarking ? (
                               <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-green-500/20 text-green-400 border border-green-500/30 shadow-sm">
                                 No Neg. Marking
                               </span>
-                            )}
-                            {testPattern.pattern.hasNegativeMarking && (
+                            ) : (
                               <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-red-500/20 text-red-400 border border-red-500/30 shadow-sm">
                                 Has Neg. Marking
                               </span>
                             )}
                           </div>
-                          <div>
-                            {!testPattern.pattern.allowsCalculator && (
+                          <div className="flex flex-wrap gap-2">
+                            {!testPattern.pattern.allowsCalculator ? (
                               <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-red-500/20 text-red-400 border border-red-500/30 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
-                                No Calculator
+                                <span>No Calculator</span>
                               </span>
-                            )}
-                            {testPattern.pattern.allowsCalculator && (
+                            ) : (
                               <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-green-500/20 text-green-400 border border-green-500/30 shadow-sm">
-                                Calculator Allowed
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-6 4h6m-3 3h-3m3-6h-3m3-3h-3" />
+                                </svg>
+                                <span>Calculator Allowed</span>
                               </span>
                             )}
                           </div>
@@ -766,20 +768,26 @@ const CalculatorPage: React.FC = () => {
               <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-electric-blue">Your Aggregate Results</h2>
               
               {/* Score Display */}
-              <div className="flex justify-center mb-4 sm:mb-6">
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 flex items-center justify-center rounded-full bg-midnight-blue/30 border-6 sm:border-8 border-electric-blue/30">
-                  <div className="text-center w-full px-1.5 sm:px-2">
-                    <span className="block text-2xl sm:text-2xl md:text-3xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
-                    <span className="text-[11px] sm:text-xs text-gray-300">Aggregate Score</span>
+              <div className="flex flex-col items-center mb-4 sm:mb-6">
+                <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center rounded-full bg-midnight-blue/30 border-4 sm:border-[6px] border-electric-blue/50 shadow-lg shadow-electric-blue/20 mb-3 sm:mb-4">
+                  <div className="absolute inset-0 rounded-full border-4 border-electric-blue/10 animate-pulse"></div>
+                  <div className="text-center w-full px-2">
+                    <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
+                    <span className="text-sm sm:text-base text-gray-300 font-medium">Aggregate</span>
                     {admissionPrediction && (
-                      <div className="mt-1 sm:mt-1.5 flex justify-center">
-                        <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] sm:text-xs ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[90%]`}>
-                          {admissionPrediction.rating} Chance
+                      <div className="mt-2">
+                        <span className={`inline-block px-2 py-1 rounded-full text-xs ${admissionPrediction.rating === 'Very Low' ? 'px-1.5 text-[11px]' : 'sm:text-sm'} ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium`}>
+                          {admissionPrediction.rating} {admissionPrediction.rating === 'Very Low' ? '' : 'Chance'}
                         </span>
                       </div>
                     )}
                   </div>
                 </div>
+                {universityId === 'fast' && (
+                  <div className="mt-2 text-xs sm:text-sm text-gray-400 text-center px-4 py-2 bg-midnight-blue/30 rounded-lg">
+                    Based on NU Test (not SAT/NAT)
+                  </div>
+                )}
               </div>
 
               {/* Score Breakdown */}
