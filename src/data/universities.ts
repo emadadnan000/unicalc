@@ -93,7 +93,7 @@ const universities: University[] = [
     ],
     meritData: [
       {
-        year: 2023,
+        year: 2024,
         programs: [
           { name: "BS Computer Science", merit: "82.5%", seats: 300 },
           { name: "BS Software Engineering", merit: "80.1%", seats: 250 },
@@ -102,7 +102,7 @@ const universities: University[] = [
           { name: "BS Cyber Security", merit: "82.9%", seats: 70 },
         ],
         source: "FAST University Admissions Office",
-        notes: "Merit increased by approximately 2-3% compared to 2022 due to increased competition."
+        notes: "Merit increased by approximately 2-3% compared to 2023 due to increased competition."
       },
       {
         year: 2022,
@@ -117,7 +117,7 @@ const universities: University[] = [
       }
     ],
     meritEstimate: {
-      year: 2024,
+      year: 2025,
       programs: [
         { 
           name: "BS Computer Science", 
@@ -565,7 +565,7 @@ const universities: University[] = [
           { name: "BS Material Engineering", merit: "82.0%", seats: 80 },
         ],
         source: "GIKI Admissions Office",
-        notes: "Merit increased by 1.2-1.8% compared to 2022"
+        notes: "Merit increased by 1.2-1.8% compared to 2023"
       },
       {
         year: 2022,

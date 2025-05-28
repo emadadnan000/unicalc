@@ -36,7 +36,7 @@ const MeritAnalysis: React.FC<MeritAnalysisProps> = ({ universityId }) => {
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between mb-6">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-electric-blue flex items-center text-center sm:text-left">
             <TrendingUp className="h-6 w-6 sm:h-7 sm:w-7 mr-2 sm:mr-3 flex-shrink-0" />
-            <span>Merit Analysis 2024</span>
+            <span>Merit Analysis 2025</span>
           </h2>
           
           <div className="relative w-full sm:w-auto">
@@ -172,7 +172,7 @@ const MeritAnalysis: React.FC<MeritAnalysisProps> = ({ universityId }) => {
 
       <div className="p-3 sm:p-4 bg-electric-blue/10 rounded-lg border border-electric-blue/30">
         <p className="text-xs sm:text-sm text-gray-300">
-          <strong>Note:</strong> Merit data is based on the closing merit of 2023. Actual merit for 2024 may vary based on competition and available seats.
+          <strong>Note:</strong> Merit data is based on the closing merit of 2024. Actual merit for 2025 may vary based on competition and available seats.
         </p>
       </div>
     </div>

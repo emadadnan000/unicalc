@@ -68,7 +68,7 @@ const universityData: UniversityData = {
       }
     ],
     csmerits: [
-      { year: 2023, merit: 186.5, seats: 400 },
+      { year: 2024, merit: 186.5, seats: 400 },
       { year: 2022, merit: 184.2, seats: 380 }
     ]
   },
@@ -100,7 +100,7 @@ const universityData: UniversityData = {
       }
     ],
     csmerits: [
-      { year: 2023, merit: 82.5, seats: 320 },
+      { year: 2024, merit: 82.5, seats: 320 },
       { year: 2022, merit: 81.2, seats: 300 }
     ]
   },
@@ -132,7 +132,7 @@ const universityData: UniversityData = {
       }
     ],
     csmerits: [
-      { year: 2023, merit: 89.2, seats: 150 },
+      { year: 2024, merit: 89.2, seats: 150 },
       { year: 2022, merit: 87.8, seats: 140 }
     ]
   },
@@ -164,7 +164,7 @@ const universityData: UniversityData = {
       }
     ],
     csmerits: [
-      { year: 2023, merit: 78.3, seats: 200 },
+      { year: 2024, merit: 78.3, seats: 200 },
       { year: 2022, merit: 76.9, seats: 180 }
     ]
   },
@@ -196,7 +196,7 @@ const universityData: UniversityData = {
       }
     ],
     csmerits: [
-      { year: 2023, merit: 65.7, seats: 500 },
+      { year: 2024, merit: 65.7, seats: 500 },
       { year: 2022, merit: 64.1, seats: 480 }
     ]
   }
