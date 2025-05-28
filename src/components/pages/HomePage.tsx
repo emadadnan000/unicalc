@@ -168,23 +168,7 @@ const HomePage: React.FC = () => {
                   <X style={{width: '20px', height: '20px'}} />
                 </button>
               ) : (
-                <div style={{
-                  position: 'absolute',
-                  right: '48px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  color: '#666',
-                  backgroundColor: 'rgba(0,0,0,0.2)',
-                  padding: '2px 8px',
-                  borderRadius: '4px',
-                  fontSize: '0.75rem',
-                  pointerEvents: 'none'
-                }}>
-                  <span>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search</span>
-                </div>
+                <div style={{ display: 'none' }}></div>
               )}
               <div style={{
                 position: 'absolute',
