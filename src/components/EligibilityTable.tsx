@@ -4,9 +4,10 @@ import { ChevronRight } from 'lucide-react';
 
 interface EligibilityTableProps {
   aggregate: number;
+  universityId: string | undefined;
 }
 
-const EligibilityTable: React.FC<EligibilityTableProps> = ({ aggregate }) => {
+const EligibilityTable: React.FC<EligibilityTableProps> = ({ aggregate, universityId }) => {
   const getEligiblePrograms = () => {
     const eligiblePrograms: {
       university: string;
@@ -14,7 +15,12 @@ const EligibilityTable: React.FC<EligibilityTableProps> = ({ aggregate }) => {
       programs: (ProgramMerit & { eligibilityStatus: 'High' | 'Medium' | 'Low' })[];
     }[] = [];
 
-    meritData.forEach(university => {
+    // Filter universities to only include the current one if universityId is provided
+    const universitiesToCheck = universityId 
+      ? meritData.filter(u => u.id === universityId)
+      : meritData;
+
+    universitiesToCheck.forEach(university => {
       university.campuses.forEach(campus => {
         const eligibleProgramsInCampus = campus.programs.filter(program => {
           if (typeof program.merit === 'string') {
@@ -105,39 +111,31 @@ const EligibilityTable: React.FC<EligibilityTableProps> = ({ aggregate }) => {
               </h4>
             </div>
             
-            <div className="overflow-x-auto -mx-3 sm:mx-0">
-              <div className="min-w-[600px] sm:min-w-0">
-                <table className="w-full">
-                  <thead>
-                    <tr className="text-left text-xs sm:text-sm text-gray-400">
-                      <th className="pb-2 font-medium px-3 sm:px-2">Program</th>
-                      <th className="pb-2 font-medium px-3 sm:px-2">Last Merit</th>
-                      <th className="pb-2 font-medium px-3 sm:px-2">Your Chance</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-xs sm:text-sm">
-                    {uni.programs.map((program, idx) => (
-                      <tr key={idx} className="border-t border-gray-700/30">
-                        <td className="py-2 px-3 sm:px-2 text-gray-200">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                            <span>{program.name}</span>
-                            <div className="flex gap-1 text-[10px] sm:text-xs text-gray-400">
-                              {program.shift && <span>({program.shift})</span>}
-                              {program.category && <span>({program.category})</span>}
-                            </div>
+            <div className="space-y-3">
+              {uni.programs.map((program, idx) => (
+                <div key={idx} className="bg-midnight-blue/10 p-3 rounded-lg border border-gray-700/30">
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h5 className="text-sm font-medium text-white">{program.name}</h5>
+                        {(program.shift || program.category) && (
+                          <div className="flex gap-2 mt-1">
+                            {program.shift && <span className="text-[10px] text-gray-400">{program.shift}</span>}
+                            {program.category && <span className="text-[10px] text-gray-400">{program.category}</span>}
                           </div>
-                        </td>
-                        <td className="py-2 px-3 sm:px-2 text-gray-300">{program.merit}</td>
-                        <td className="py-2 px-3 sm:px-2">
-                          <span className={`inline-flex items-center px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium ${getStatusColor(program.eligibilityStatus)}`}>
-                            {program.eligibilityStatus} Chance
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                        )}
+                      </div>
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium ${getStatusColor(program.eligibilityStatus)}`}>
+                        {program.eligibilityStatus} Chance
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-300">
+                      <span>Last Merit:</span>
+                      <span>{program.merit}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}
