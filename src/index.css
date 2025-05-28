@@ -1,0 +1,576 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --electric-blue: rgb(0, 180, 255);
+  --soft-cyan: rgb(123, 213, 245);
+  --deep-space: rgb(7, 15, 40);
+  --midnight-blue: rgb(15, 28, 70);
+  --muted-purple: rgb(148, 162, 220);
+  --neon-pink: rgb(255, 0, 153);
+  --neon-purple: rgb(172, 50, 255);
+  --lime-green: rgb(80, 250, 123);
+}
+
+body {
+  background-color: var(--deep-space);
+  color: white;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Fix for text visibility issues */
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+.homepage-heading {
+  color: white !important;
+  text-shadow: 0 0 7px rgba(0, 180, 255, 0.3);
+  z-index: 10 !important;
+  position: relative !important;
+  letter-spacing: -0.02em;
+  font-weight: 700 !important;
+}
+
+.highlight-text {
+  color: var(--electric-blue) !important;
+  display: inline-block;
+  z-index: 10 !important;
+  position: relative !important;
+  font-weight: 700;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 180, 255, 0.5);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.3);
+}
+
+.glassmorphic-card {
+  background: rgba(15, 28, 70, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 1.2rem;
+  border: 1px solid rgba(123, 213, 245, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.glassmorphic-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-7px) scale(1.02);
+  z-index: 10;
+  border: 1px solid rgba(0, 180, 255, 0.2);
+}
+
+.glassmorphic-card:hover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.2rem;
+  border: 2px solid rgba(0, 217, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.5), inset 0 0 10px rgba(0, 180, 255, 0.2);
+  z-index: 11;
+  pointer-events: none;
+  animation: neonPulse 2s infinite ease-in-out;
+  filter: blur(1px);
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    opacity: 0.7;
+    box-shadow: 0 0 20px rgba(0, 180, 255, 0.5), inset 0 0 10px rgba(0, 180, 255, 0.2);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.6), inset 0 0 15px rgba(0, 180, 255, 0.3);
+    filter: blur(1.5px);
+  }
+}
+
+.glassmorphic-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.glassmorphic-card:hover h3 {
+  transform: translateY(-2px);
+  color: #7eeaff;
+}
+
+.glassmorphic-card:hover p {
+  opacity: 0.95;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 bg-opacity-50 rounded-xl border border-gray-700 focus:outline-none focus:border-electric-blue text-white;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.3);
+}
+
+.nav-link {
+  @apply text-white hover:text-electric-blue transition-colors duration-300;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--electric-blue);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.floating-label {
+  @apply absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none transition-all duration-300;
+}
+
+input:focus ~ .floating-label,
+input:not(:placeholder-shown) ~ .floating-label {
+  @apply top-0 text-xs bg-midnight-blue px-1;
+}
+
+.progress-bar-container {
+  @apply w-full h-2 bg-midnight-blue rounded-full overflow-hidden;
+}
+
+.progress-bar {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, var(--electric-blue), var(--neon-purple));
+  animation: progressPulse 1.5s ease-in-out infinite;
+}
+
+.text-electric-blue {
+  color: var(--electric-blue);
+}
+
+.text-soft-cyan {
+  color: var(--soft-cyan);
+}
+
+.text-deep-space {
+  color: var(--deep-space);
+}
+
+.text-midnight-blue {
+  color: var(--midnight-blue);
+}
+
+.text-muted-purple {
+  color: var(--muted-purple);
+}
+
+.bg-electric-blue {
+  background-color: var(--electric-blue);
+}
+
+.bg-soft-cyan {
+  background-color: var(--soft-cyan);
+}
+
+.bg-deep-space {
+  background-color: var(--deep-space);
+}
+
+.bg-midnight-blue {
+  background-color: var(--midnight-blue);
+}
+
+.bg-muted-purple {
+  background-color: var(--muted-purple);
+}
+
+.border-electric-blue {
+  border-color: var(--electric-blue);
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(0, 180, 255, 0.8);
+  }
+  50% {
+    opacity: 0.9;
+    text-shadow: 0 0 25px rgba(172, 50, 255, 0.8);
+  }
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-hover-effect:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.btn-hover-effect:hover:before {
+  left: 100%;
+}
+
+.text-danger {
+  color: #ff4d4d;
+}
+
+.bg-success {
+  background: linear-gradient(90deg, #4ade80, var(--lime-green));
+}
+
+.bg-warning {
+  background: linear-gradient(90deg, #facc15, #fd9800);
+}
+
+.bg-danger {
+  background: linear-gradient(90deg, #ff4d4d, var(--neon-pink));
+}
+
+.glassmorphic {
+  @apply bg-opacity-10 backdrop-blur-md bg-white border border-muted-purple border-opacity-20 shadow-md;
+}
+
+.glassmorphic-card {
+  @apply glassmorphic transition-all duration-300 hover:shadow-glow;
+}
+
+.input-field:focus ~ .floating-label,
+.input-field:not(:placeholder-shown) ~ .floating-label {
+  @apply transform -translate-y-5 scale-75 text-electric-blue;
+}
+
+.input-field {
+  @apply glassmorphic w-full p-3 rounded-md text-white bg-opacity-20 outline-none focus:ring-1 focus:ring-electric-blue transition;
+}
+
+.page-transition-enter {
+  @apply opacity-0;
+}
+
+.page-transition-enter-active {
+  @apply opacity-100 transition-opacity duration-500;
+}
+
+.page-transition-exit {
+  @apply opacity-100;
+}
+
+.page-transition-exit-active {
+  @apply opacity-0 transition-opacity duration-500;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+/* Enhanced animations */
+.hover-glow {
+  @apply transition-all duration-300;
+}
+
+.hover-glow:hover {
+  @apply shadow-glow transform scale-105;
+}
+
+/* Form improvements */
+select.input-field {
+  @apply appearance-none bg-no-repeat bg-right pr-8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237eeaff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 1.5rem;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, var(--electric-blue) 0%, var(--neon-purple) 25%, var(--neon-pink) 51%, var(--lime-green) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: AnimateGradient 6s ease infinite;
+}
+
+@keyframes AnimateGradient {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Staggered animation for list items */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+}
+
+.stagger-item:nth-child(1) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.6s; }
+.stagger-item:nth-child(7) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.7s; }
+.stagger-item:nth-child(8) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.8s; }
+.stagger-item:nth-child(9) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 0.9s; }
+.stagger-item:nth-child(10) { animation: fadeInUp 0.5s ease-out forwards; animation-delay: 1s; }
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .input-field {
+    @apply text-base;
+  }
+  
+  .floating-label {
+    @apply text-sm;
+  }
+  
+  .progress-bar-container {
+    @apply h-3;
+  }
+  
+  .glassmorphic-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  .homepage-heading {
+    font-size: calc(1.5rem + 2vw) !important;
+  }
+  
+  .slide-up, .slide-up-delay-1, .slide-up-delay-2, .slide-up-delay-3 {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Front page text animations */
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.slide-up-delay-1 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.slide-up-delay-2 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.slide-up-delay-3 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Calculate Now Button Animation */
+.calculate-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease !important;
+}
+
+.calculate-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.calculate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);
+  background-color: rgba(0, 190, 255, 0.9) !important;
+}
+
+.calculate-btn:hover::before {
+  left: 100%;
+  animation: shine 2s ease-in-out;
+  opacity: 0.5;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhance link animations */
+a {
+  transition: all 0.3s ease;
+}
+
+/* Add subtle hover effects to all interactive elements */
+button, input, select, a {
+  transition: all 0.3s ease;
+}
+
+button:hover, a:hover {
+  transform: translateY(-2px);
+}
+
+/* Make inputs more interactive */
+input:focus, select:focus {
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.3);
+}
+
+/* Add subtle animations to the page */
+.subtle-hover {
+  transition: all 0.3s ease;
+}
+
+.subtle-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a subtle floating animation to elements */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Add text shadow to important text for better readability */
+.important-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a subtle pulse animation to draw attention */
+.pulse-attention {
+  animation: none;
+}
+
+/* Add a clean box-shadow to elements */
+.clean-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.clean-shadow:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Add a nice focus effect to inputs */
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 180, 255, 0.4);
+}
+
+/* Add subtle animations to all headings */
+h1, h2, h3, h4, h5, h6 {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
