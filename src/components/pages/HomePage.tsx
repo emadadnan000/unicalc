@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronRight, Search, X, Keyboard } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import UniversityGrid from '../university/UniversityGrid';
 import universities from '../../data/universities';
 
@@ -99,37 +99,22 @@ const HomePage: React.FC = () => {
             maxWidth: '800px',
             marginLeft: 'auto',
             marginRight: 'auto',
-            opacity: '0.9'
+            opacity: '0.9',
+            lineHeight: '1.6'
           }}>
-            Get accurate admission aggregate calculations for top Pakistani universities based on official merit formulas.
+            UniCalc is your all-in-one platform for university admissions in Pakistan. Calculate your aggregate, 
+            explore test patterns, check eligibility, and make informed decisions about your academic future. 
+            Our tools are designed to simplify your university application process.
           </p>
           
-          {/* Enhanced button with animation */}
-          <div className="slide-up-delay-3">
-            <a 
-              href="#universities" 
-              className="calculate-btn pulse-attention"
-              style={{
-                padding: '16px 36px',
-                backgroundColor: 'var(--electric-blue)',
-                color: '#FFFFFF',
-                borderRadius: '9999px',
-                fontWeight: '600',
-                display: 'inline-flex',
-                alignItems: 'center',
-                textDecoration: 'none',
-                margin: '0 auto',
-                boxShadow: '0 0 20px rgba(0, 180, 255, 0.3)',
-                transition: 'all 0.3s ease'
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById('universities');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Get Started <ChevronRight style={{marginLeft: '8px', width: '20px', height: '20px'}} />
-            </a>
+          <div className="mt-8">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+              </span>
+              <span className="text-cyan-400 text-sm font-medium">Live - {filteredUniversities.length} Universities Available</span>
+            </div>
           </div>
           
           {/* Enhanced Search Bar */}
@@ -191,10 +176,14 @@ const HomePage: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
-                  color: '#AAAAAA'
+                  color: '#666',
+                  backgroundColor: 'rgba(0,0,0,0.2)',
+                  padding: '2px 8px',
+                  borderRadius: '4px',
+                  fontSize: '0.75rem',
+                  pointerEvents: 'none'
                 }}>
-                  {/* <Keyboard style={{width: '16px', height: '16px'}} /> */}
-                  <span style={{fontSize: '0.75rem'}}></span>
+                  <span>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search</span>
                 </div>
               )}
               <div style={{
@@ -240,7 +229,7 @@ const HomePage: React.FC = () => {
               fontSize: '1.125rem',
               opacity: '0.9'
             }}>
-              Choose a university from the list below to calculate your admission aggregate using their official merit formula.
+              Browse through our comprehensive database of top universities in Pakistan to find your perfect academic match.
             </p>
             
             {showResults && (
@@ -252,9 +241,24 @@ const HomePage: React.FC = () => {
                 borderRadius: '12px',
                 display: 'inline-block'
               }}>
-                <p>
-                  Showing results for "<span style={{fontWeight: '600'}}>{searchTerm}</span>" ({filteredUniversities.length} universities)
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                    Your Complete University
+                  </span>{' '}
+                  <span className="relative inline-block">
+                    <span className="relative z-10">Admission Companion</span>
+                    <span className="absolute bottom-0 left-0 w-full h-3 bg-cyan-500/20 -rotate-1 -z-0" />
+                  </span>
+                </h2>
+                <p className="text-xl text-gray-300 max-w-4xl mx-auto px-4">
+                  UniCalc is your all-in-one platform for navigating university admissions in Pakistan. From calculating your aggregate to understanding test patterns, we've got you covered every step of the way.
                 </p>
+                <div className="flex items-center">
+                  <span className="mr-1">Showing results for</span>
+                  <span className="font-semibold text-cyan-400">"{searchTerm}"</span>
+                  <span className="mx-2 text-gray-400">•</span>
+                  <span className="text-cyan-300">{filteredUniversities.length} {filteredUniversities.length === 1 ? 'university' : 'universities'}</span>
+                </div>
                 {filteredUniversities.length === 0 && (
                   <button 
                     onClick={handleClearSearch}

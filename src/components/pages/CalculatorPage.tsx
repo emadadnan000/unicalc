@@ -1045,7 +1045,7 @@ const CalculatorPage: React.FC = () => {
           )}
 
           {/* Results Section */}
-          {activeSection === 'results' && university?.id !== 'uet' && aggregate !== null && !showTestPattern && !showFacts && !showMerits && (
+          {activeSection === 'results' && aggregate !== null && !showTestPattern && !showFacts && !showMerits && (
             <div className="space-y-6">
               <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-electric-blue">Your Aggregate Results</h2>
               
@@ -1181,7 +1181,7 @@ const CalculatorPage: React.FC = () => {
               
               {getCurrentUniversityData()?.facts && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {getCurrentUniversityData()!.facts.map((fact, index) => (
+                  {getCurrentUniversityData()!.facts.map((fact: any, index: any) => (
                     <div 
                       key={index}
                       className="bg-midnight-blue/20 p-6 rounded-xl border border-gray-700/30 hover:border-electric-blue/50 transition-all duration-300"
