@@ -503,19 +503,54 @@ const universities: University[] = [
     logo: "/imgs/giki.jpg",
     interestingFacts: [
       {
-        title: "Founded in 1993",
-        description: "Established by former President of Pakistan Ghulam Ishaq Khan.",
+        title: "Visionary Foundation",
+        description: "Established in 1993 by Ghulam Ishaq Khan, former President of Pakistan, with a vision to create a world-class engineering institution.",
         icon: "🎓"
       },
       {
-        title: "Elite Institution",
-        description: "Known for its rigorous academic standards and selective admissions.",
-        icon: "🏅"
+        title: "First Private Engineering University",
+        description: "GIKI was Pakistan's first private sector engineering university, setting new standards in technical education.",
+        icon: "🏛️"
       },
       {
-        title: "Campus Life",
-        description: "Residential campus with state-of-the-art facilities in Khyber Pakhtunkhwa.",
-        icon: "🏛️"
+        title: "International Recognition",
+        description: "Consistently ranked among the top engineering universities in Pakistan and recognized in international rankings for engineering and technology.",
+        icon: "🌍"
+      },
+      {
+        title: "Research Excellence",
+        description: "Home to cutting-edge research centers including the National Center for Artificial Intelligence and the National Center in Big Data & Cloud Computing.",
+        icon: "🔬"
+      },
+      {
+        title: "Student Innovation",
+        description: "Students have won numerous international competitions including Formula Student UK and International RoboCup.",
+        icon: "🏆"
+      },
+      {
+        title: "Alumni Network",
+        description: "Strong global alumni network with graduates working at top tech companies like Google, Microsoft, and SpaceX.",
+        icon: "🌐"
+      },
+      {
+        title: "Entrepreneurial Hub",
+        description: "Hosts 'The Catalyst' - a startup incubator that has helped launch over 50 tech startups.",
+        icon: "💡"
+      },
+      {
+        title: "Unique Location",
+        description: "Nestled in the scenic hills of Khyber Pakhtunkhwa, offering a peaceful environment for academic pursuits.",
+        icon: "🏞️"
+      },
+      {
+        title: "Student Societies",
+        description: "Over 24 active student societies including IEEE, ACM, ASME, and AIAA chapters for professional development.",
+        icon: "👥"
+      },
+      {
+        title: "Global Collaborations",
+        description: "Academic partnerships with top international universities for student exchange and research collaboration.",
+        icon: "🤝"
       }
     ],
     meritData: [
