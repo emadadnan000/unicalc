@@ -356,7 +356,290 @@ const CalculatorPage: React.FC = () => {
 
   // Helper functions for new features
   const getCurrentUniversityData = () => {
-    return university?.id ? universityData[university.id] || null : null;
+    if (!university?.id) return null;
+    
+    // Return existing data if available
+    if (universityData[university.id]) {
+      return universityData[university.id];
+    }
+
+    // University-specific facts with detailed information
+    const universityFacts: Record<string, any> = {
+      // FAST-NUCES
+      fast: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Silicon Valley Alumni",
+            description: "Strong presence in Silicon Valley with alumni at Microsoft, Salesforce, Lyft, and Waymo",
+            highlight: "Global Tech Impact"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "High Employability",
+            description: "Graduates secure competitive positions in top tech companies worldwide",
+            highlight: "95% Job Placement"
+          },
+          {
+            icon: <MapPin className="h-6 w-6" />,
+            title: "Alumni Network",
+            description: "Active chapters in the U.S. including Silicon Valley, fostering global connections",
+            highlight: "Strong Community"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Academic Excellence",
+            description: "Renowned for rigorous computer science and emerging sciences programs",
+            highlight: "#1 in CS"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 82.5 },
+          { year: new Date().getFullYear() - 2, merit: 81.2 }
+        ]
+      },
+      
+      // NUST
+      nust: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Global Ranking",
+            description: "Ranked #353 in QS World University Rankings 2025, #127 in Engineering & Technology",
+            highlight: "World-Class"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "International Reach",
+            description: "Extensive global partnerships and exchange programs with top universities",
+            highlight: "Global Network"
+          },
+          {
+            icon: <BarChart2 className="h-6 w-6" />,
+            title: "Research Powerhouse",
+            description: "Leading in research output and citations across multiple disciplines",
+            highlight: "Innovation Hub"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Diverse Programs",
+            description: "Wide range of programs fostering interdisciplinary learning and innovation",
+            highlight: "Comprehensive Education"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 86.5 },
+          { year: new Date().getFullYear() - 2, merit: 85.0 }
+        ]
+      },
+      
+      // GIKI
+      giki: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Fully Residential",
+            description: "100% residential campus fostering a close-knit academic community",
+            highlight: "Immersive Experience"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "Elite Admissions",
+            description: "Highly selective intake ensuring academic excellence",
+            highlight: "Top 1% Students"
+          },
+          {
+            icon: <MapPin className="h-6 w-6" />,
+            title: "State-of-the-Art",
+            description: "Modern laboratories and research centers with cutting-edge technology",
+            highlight: "Premium Facilities"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Global Alumni",
+            description: "Strong network of alumni in top engineering sectors worldwide",
+            highlight: "Worldwide Impact"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 84.5 },
+          { year: new Date().getFullYear() - 2, merit: 83.0 }
+        ]
+      },
+      
+      // PIEAS
+      pieas: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Nuclear Excellence",
+            description: "Top institution for nuclear science and technology in Pakistan",
+            highlight: "#1 in Nuclear"
+          },
+          {
+            icon: <BarChart2 className="h-6 w-6" />,
+            title: "National Leader",
+            description: "Consistently ranked among Pakistan's top engineering universities by HEC",
+            highlight: "Elite Status"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Research Focus",
+            description: "Intensive research programs driving national scientific development",
+            highlight: "Cutting-Edge"
+          },
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Global Recognition",
+            description: "Ranked among top 400 universities worldwide by QS Rankings",
+            highlight: "World-Class"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 87.5 },
+          { year: new Date().getFullYear() - 2, merit: 86.0 }
+        ]
+      },
+      
+      // COMSATS
+      comsats: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "IT Leadership",
+            description: "Ranked #1 in Pakistan for Computer Sciences and IT education",
+            highlight: "Tech Leader"
+          },
+          {
+            icon: <MapPin className="h-6 w-6" />,
+            title: "Global Network",
+            description: "Part of an inter-governmental organization with member states across Asia, Africa, and Latin America",
+            highlight: "International Reach"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "Wide Access",
+            description: "Multiple campuses across Pakistan ensuring quality education nationwide",
+            highlight: "Nationwide Presence"
+          },
+          {
+            icon: <BarChart2 className="h-6 w-6" />,
+            title: "Research Focus",
+            description: "Strong emphasis on research with numerous publications in scientific fields",
+            highlight: "Innovation Hub"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 78.5 },
+          { year: new Date().getFullYear() - 2, merit: 77.0 }
+        ]
+      },
+      
+      // Air University
+      air: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Cyber Security Hub",
+            description: "Home to a dedicated Department of Cyber Security and the National Cyber Security Academy",
+            highlight: "Cyber Excellence"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Competitive Edge",
+            description: "Consistent top performer in national cybersecurity competitions",
+            highlight: "Award-Winning"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "Community Engagement",
+            description: "Active in promoting cybersecurity awareness through workshops and seminars",
+            highlight: "Industry Leader"
+          },
+          {
+            icon: <BarChart2 className="h-6 w-6" />,
+            title: "Technical Prowess",
+            description: "Strong focus on practical skills and industry-relevant education",
+            highlight: "Skills-First"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 80.0 },
+          { year: new Date().getFullYear() - 2, merit: 78.5 }
+        ]
+      },
+      
+      // NED University
+      ned: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Historical Legacy",
+            description: "Established in 1921, one of Pakistan's oldest engineering institutions",
+            highlight: "Pioneering Spirit"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Comprehensive Programs",
+            description: "Wide range of engineering disciplines meeting industry demands",
+            highlight: "Diverse Offerings"
+          },
+          {
+            icon: <MapPin className="h-6 w-6" />,
+            title: "Industrial Hub",
+            description: "Prime location in Karachi with strong industry connections",
+            highlight: "Career Ready"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "Alumni Impact",
+            description: "Graduates have significantly contributed to Pakistan's engineering sector",
+            highlight: "Proven Track Record"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 79.0 },
+          { year: new Date().getFullYear() - 2, merit: 77.5 }
+        ]
+      },
+      
+      // Default template for other universities
+      default: {
+        facts: [
+          {
+            icon: <Award className="h-6 w-6" />,
+            title: "Academic Excellence",
+            description: `Committed to providing quality education in engineering and technology`,
+            highlight: "Quality Focus"
+          },
+          {
+            icon: <Users className="h-6 w-6" />,
+            title: "Student Development",
+            description: `Comprehensive programs fostering technical and professional growth`,
+            highlight: "Holistic Education"
+          },
+          {
+            icon: <MapPin className="h-6 w-6" />,
+            title: "Prime Location",
+            description: `Located in ${university.name.includes('Islamabad') ? 'the capital city' : 'a major educational hub'}`,
+            highlight: "Ideal Setting"
+          },
+          {
+            icon: <GraduationCap className="h-6 w-6" />,
+            title: "Future Ready",
+            description: `Equipping students with skills for tomorrow's challenges`,
+            highlight: "Forward-Looking"
+          }
+        ],
+        csmerits: [
+          { year: new Date().getFullYear() - 1, merit: 75.0 },
+          { year: new Date().getFullYear() - 2, merit: 74.0 }
+        ]
+      }
+    };
+
+    // Return specific university data or default
+    return universityFacts[university.id.toLowerCase()] || universityFacts.default;
   };
 
   const predictCurrentYearMerit = (merits: MeritData[]): number => {
