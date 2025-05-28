@@ -955,36 +955,35 @@ const CalculatorPage: React.FC = () => {
                           {testPattern.name}
                         </h3>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
-                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg">
-                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">Format</h4>
-                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-1 sm:space-y-0">
-                              <span className="text-white font-medium text-sm sm:text-base">
-                                {testPattern.pattern.totalMCQs} MCQs
-                              </span>
-                              <span className="text-white font-medium text-sm sm:text-base">
-                                {testPattern.pattern.duration}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg">
-                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">Total Marks</h4>
-                            <div className="text-white font-medium text-sm sm:text-base">
-                              {testPattern.pattern.totalMarks} Marks
+                        <div className="grid grid-cols-1 gap-3 mb-6 w-full">
+                          <div className="bg-midnight-blue/40 p-4 rounded-lg w-full">
+                            <h4 className="text-gray-300 text-xs uppercase tracking-wider mb-2">Test Format</h4>
+                            <div className="space-y-2">
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-400 text-sm">Total MCQs:</span>
+                                <span className="text-white font-medium">{testPattern.pattern.totalMCQs}</span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-400 text-sm">Duration:</span>
+                                <span className="text-white font-medium">{testPattern.pattern.duration}</span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-400 text-sm">Total Marks:</span>
+                                <span className="text-white font-medium">{testPattern.pattern.totalMarks} Marks</span>
+                              </div>
                             </div>
                           </div>
                         </div>
 
                         {testPattern.pattern.subjects.length > 0 && (
-                          <div className="bg-midnight-blue/40 p-3 sm:p-4 rounded-lg mb-6">
-                            <h4 className="text-gray-300 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">Subject Distribution</h4>
-                            <div className="space-y-2 sm:space-y-3">
-                              <ul className="space-y-2 sm:space-y-3">
+                          <div className="bg-midnight-blue/40 p-4 rounded-lg mb-6 w-full">
+                            <h4 className="text-gray-300 text-xs uppercase tracking-wider mb-3">Subject Distribution</h4>
+                            <div className="space-y-3">
+                              <ul className="space-y-2">
                                 {testPattern.pattern.subjects.map((subject, index) => (
-                                  <li key={index} className="flex justify-between items-center bg-midnight-blue/60 p-2 sm:p-3 rounded-lg">
-                                    <span className="text-gray-300 text-xs sm:text-sm">{subject.name}</span>
-                                    <span className="text-white font-medium text-xs sm:text-sm bg-electric-blue/20 px-2 py-1 rounded">
+                                  <li key={index} className="flex justify-between items-center bg-midnight-blue/60 p-3 rounded-lg">
+                                    <span className="text-gray-300 text-sm">{subject.name}</span>
+                                    <span className="text-white font-medium text-sm bg-electric-blue/20 px-3 py-1 rounded-full">
                                       {subject.mcqs} MCQs
                                     </span>
                                   </li>
@@ -1046,7 +1045,7 @@ const CalculatorPage: React.FC = () => {
           )}
 
           {/* Results Section */}
-          {activeSection === 'results' && aggregate !== null && !showTestPattern && !showFacts && !showMerits && (
+          {activeSection === 'results' && university?.id !== 'uet' && aggregate !== null && !showTestPattern && !showFacts && !showMerits && (
             <div className="space-y-6">
               <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-electric-blue">Your Aggregate Results</h2>
               
@@ -1210,8 +1209,8 @@ const CalculatorPage: React.FC = () => {
 
           {/* Merit Analysis Section */}
           {showMerits && (
-            <div className="space-y-6">
-              <MeritAnalysis universityId={university.id} />
+            <div className="mt-6">
+              <MeritAnalysis universityId={university?.id} />
             </div>
           )}
         </div>
