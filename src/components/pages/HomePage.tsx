@@ -313,42 +313,88 @@ const HomePage: React.FC = () => {
           <div className="text-center">
             {/* Main Heading with staggered animation */}
             <div className="mb-6 sm:mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className={`block bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <span 
+                  className={`block bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                  style={{
+                    transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: isLoaded ? '0.2s' : '0s'
+                  }}
+                >
                   Calculate Your
                 </span>
-                <span className={`block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mt-1.5 sm:mt-2.5 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '200ms'}}>
+                <span 
+                  className={`block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mt-1.5 sm:mt-2.5 transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
+                  style={{
+                    transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: isLoaded ? '0.4s' : '0s'
+                  }}
+                >
                   University Success
                 </span>
               </h1>
             </div>
 
             {/* Subtitle with delayed animation */}
-            <p className={`text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl sm:max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-4 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '400ms'}}>
-              Your comprehensive platform for university admissions in Pakistan. Calculate aggregates, 
-              explore test patterns, and make informed decisions about your academic future.
-            </p>
+            <div className="relative">
+              <p 
+                className={`text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl sm:max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-4 transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} 
+                style={{
+                  transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transitionDelay: isLoaded ? '0.6s' : '0s',
+                  textShadow: 'none'
+                }}
+              >
+                Your comprehensive platform for university admissions in Pakistan. Calculate aggregates, 
+                explore test patterns, and make informed decisions about your academic future.
+              </p>
+
+            </div>
 
             {/* Animated Stats Cards */}
             <div className={`grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xs sm:max-w-2xl mx-auto mb-6 sm:mb-8 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '600ms'}}>
               <div className="group bg-gradient-to-br from-cyan-500/15 to-blue-500/15 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-3 sm:p-4 hover:border-cyan-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/20">
                 <div className="flex items-center justify-center mb-1 sm:mb-2 group-hover:scale-105 transition-transform duration-300">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 mr-1.5 sm:mr-2 group-hover:text-cyan-300 animate-pulse" style={{animationDuration: '2s'}} />
-                  <span className="text-xl sm:text-2xl font-bold text-white">100+</span>
+                  <span 
+                    className="text-xl sm:text-2xl font-bold text-white inline-block"
+                    style={{
+                      animation: 'float 3s ease-in-out infinite',
+                      animationDelay: '0.2s'
+                    }}
+                  >
+                    100+
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Students Helped</p>
               </div>
               <div className="group bg-gradient-to-br from-blue-500/15 to-purple-500/15 backdrop-blur-sm border border-blue-500/30 rounded-xl p-3 sm:p-4 hover:border-blue-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/20">
                 <div className="flex items-center justify-center mb-1 sm:mb-2 group-hover:scale-105 transition-transform duration-300">
                   <Award className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mr-1.5 sm:mr-2 group-hover:text-blue-300 animate-bounce" style={{animationDuration: '3s'}} />
-                  <span className="text-xl sm:text-2xl font-bold text-white">{mockUniversities.length}+</span>
+                  <span 
+                    className="text-xl sm:text-2xl font-bold text-white inline-block"
+                    style={{
+                      animation: 'float 3s ease-in-out infinite',
+                      animationDelay: '0.4s'
+                    }}
+                  >
+                    {mockUniversities.length}+
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Universities</p>
               </div>
               <div className="group bg-gradient-to-br from-purple-500/15 to-pink-500/15 backdrop-blur-sm border border-purple-500/30 rounded-xl p-3 sm:p-4 hover:border-purple-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/20">
                 <div className="flex items-center justify-center mb-1 sm:mb-2 group-hover:scale-105 transition-transform duration-300">
                   <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 mr-1.5 sm:mr-2 group-hover:text-purple-300 animate-ping" style={{animationDuration: '4s'}} />
-                  <span className="text-xl sm:text-2xl font-bold text-white">95%</span>
+                  <span 
+                    className="text-xl sm:text-2xl font-bold text-white inline-block"
+                    style={{
+                      animation: 'float 3s ease-in-out infinite',
+                      animationDelay: '0.6s'
+                    }}
+                  >
+                    95%
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Success Rate</p>
               </div>
@@ -505,5 +551,20 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
+
+// Add floating animation for stats numbers
+const styles = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+`;
+
+// Add the styles to the head
+try {
+  const styleElement = document.createElement('style');
+  styleElement.innerHTML = styles;
+  document.head.appendChild(styleElement);
+} catch (e) {}
 
 export default HomePage;

@@ -717,7 +717,8 @@ const CalculatorPage: React.FC = () => {
         <div className="max-w-[52rem] mx-auto glassmorphic-card p-4 sm:p-8 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] border border-gray-700/30">
           {/* Sticky Tabs Container - Stays fixed at the top on mobile */}
           <div className="sticky top-0 z-10 sm:static bg-transparent -mx-4 sm:mx-0 px-2 sm:px-0 pt-2 sm:pt-0 pb-2 sm:pb-0 -mt-2 sm:mt-0 mb-2 sm:mb-0">
-            <div className="flex items-center space-x-1.5 sm:space-x-1 mb-4 sm:mb-6 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar bg-midnight-blue/95 sm:bg-transparent rounded-lg sm:rounded-none px-2 sm:px-0">
+            <div className="relative">
+              <div className="flex items-center space-x-1.5 sm:space-x-1 mb-1 sm:mb-6 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar bg-midnight-blue/95 sm:bg-transparent rounded-lg sm:rounded-none px-2 sm:px-0">
               <button
                 onClick={() => {setActiveSection('form'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
                 className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
@@ -789,6 +790,10 @@ const CalculatorPage: React.FC = () => {
                   <span>Facts</span>
                 </div>
               </button>
+              </div>
+              <p className="text-center text-[10px] text-gray-400 mb-2 sm:hidden animate-pulse">
+                ← Swipe to see more features →
+              </p>
             </div>
           </div>
           
