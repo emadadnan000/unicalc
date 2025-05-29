@@ -715,56 +715,93 @@ const CalculatorPage: React.FC = () => {
       {/* Main Content */}
       <main className="container mx-auto px-2 sm:px-4 pt-8 pb-12">
         <div className="max-w-[52rem] mx-auto glassmorphic-card p-4 sm:p-8 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] border border-gray-700/30">
-          {/* Tabs */}
-          <div className="flex items-center space-x-1 mb-4 sm:mb-6">
-            <button
-              onClick={() => {setActiveSection('form'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
-              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${activeSection === 'form' && !showTestPattern && !showFacts && !showMerits ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              <div className="flex items-center gap-1">
-                <Calculator className="h-3 w-3" />
-                <span>Calculator</span>
-              </div>
-            </button>
-            {aggregate !== null && (
+          {/* Sticky Tabs Container - Stays fixed at the top on mobile */}
+          <div className="sticky top-0 z-10 sm:static bg-transparent -mx-4 sm:mx-0 px-2 sm:px-0 pt-2 sm:pt-0 pb-2 sm:pb-0 -mt-2 sm:mt-0 mb-2 sm:mb-0">
+            <div className="flex items-center space-x-1.5 sm:space-x-1 mb-4 sm:mb-6 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar bg-midnight-blue/95 sm:bg-transparent rounded-lg sm:rounded-none px-2 sm:px-0">
               <button
-                onClick={() => {setActiveSection('results'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
-                className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${activeSection === 'results' ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
+                onClick={() => {setActiveSection('form'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
+                className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                  activeSection === 'form' && !showTestPattern && !showFacts && !showMerits 
+                    ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/50 shadow-lg' 
+                    : 'bg-midnight-blue/90 sm:bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue/90 border border-gray-700/50'
+                }`}
               >
-                <div className="flex items-center gap-1">
-                  <BarChart2 className="h-3 w-3" />
-                  <span>Results</span>
+                <div className="flex items-center gap-1.5">
+                  <Calculator className="h-3.5 w-3.5 sm:h-3 sm:w-3 flex-shrink-0" />
+                  <span>Calculator</span>
                 </div>
               </button>
-            )}
-            <button
-              onClick={() => {setShowTestPattern(true); setActiveSection(''); setShowFacts(false); setShowMerits(false);}} 
-              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showTestPattern ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              <div className="flex items-center gap-1">
-                <FileText className="h-3 w-3" />
-                <span>Pattern</span>
-              </div>
-            </button>
-            <button
-              onClick={() => {setShowFacts(true); setActiveSection(''); setShowTestPattern(false); setShowMerits(false);}} 
-              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showFacts ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              <div className="flex items-center gap-1">
-                <Star className="h-3 w-3" />
-                <span>Facts</span>
-              </div>
-            </button>
-            <button
-              onClick={() => {setShowMerits(true); setActiveSection(''); setShowTestPattern(false); setShowFacts(false);}} 
-              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded transition-colors ${showMerits ? 'text-electric-blue border-b-2 border-electric-blue' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              <div className="flex items-center gap-1">
-                <TrendingUp className="h-3 w-3" />
-                <span>Merit</span>
-              </div>
-            </button>
+              
+              {aggregate !== null && (
+                <button
+                  onClick={() => {setActiveSection('results'); setShowTestPattern(false); setShowFacts(false); setShowMerits(false);}} 
+                  className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                    activeSection === 'results' 
+                      ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/50 shadow-lg' 
+                      : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue/90 border border-gray-700/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <BarChart2 className="h-3.5 w-3.5 sm:h-3 sm:w-3 flex-shrink-0" />
+                    <span>Results</span>
+                  </div>
+                </button>
+              )}
+              
+              <button
+                onClick={() => {setShowMerits(true); setActiveSection(''); setShowTestPattern(false); setShowFacts(false);}} 
+                className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                  showMerits 
+                    ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/50 shadow-lg' 
+                    : 'bg-midnight-blue/90 sm:bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue/90 border border-gray-700/50'
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <TrendingUp className="h-3.5 w-3.5 sm:h-3 sm:w-3 flex-shrink-0" />
+                  <span>Merit</span>
+                </div>
+              </button>
+              
+              <button
+                onClick={() => {setShowTestPattern(true); setActiveSection(''); setShowFacts(false); setShowMerits(false);}} 
+                className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                  showTestPattern 
+                    ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/50 shadow-lg' 
+                    : 'bg-midnight-blue/90 sm:bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue/90 border border-gray-700/50'
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <FileText className="h-3.5 w-3.5 sm:h-3 sm:w-3 flex-shrink-0" />
+                  <span>Pattern</span>
+                </div>
+              </button>
+              
+              <button
+                onClick={() => {setShowFacts(true); setActiveSection(''); setShowTestPattern(false); setShowMerits(false);}} 
+                className={`flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-1.5 text-xs sm:text-sm font-medium rounded-lg sm:rounded transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                  showFacts 
+                    ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/50 shadow-lg' 
+                    : 'bg-midnight-blue/90 sm:bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue/90 border border-gray-700/50'
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <Star className="h-3.5 w-3.5 sm:h-3 sm:w-3 flex-shrink-0" />
+                  <span>Facts</span>
+                </div>
+              </button>
+            </div>
           </div>
+          
+          {/* Add custom scrollbar styling */}
+          <style>{`
+            .hide-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+            .hide-scrollbar {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
+          `}</style>
 
           {/* Form Section */}
           {activeSection === 'form' && (
