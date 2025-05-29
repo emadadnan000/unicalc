@@ -70,6 +70,534 @@ export interface University {
 
 const universities: University[] = [
   {
+    id: "pu",
+    name: "University of the Punjab",
+    shortName: "PU",
+    logo: "/imgs/pu.jpg",
+    meritData: [
+      {
+        year: 2024,
+        programs: [
+          { name: "BS Computer Science", merit: "81.3%", seats: 200 },
+          { name: "BS Information Technology", merit: "79.8%", seats: 150 },
+          { name: "BS Software Engineering", merit: "80.5%", seats: 120 },
+          { name: "BS Data Science", merit: "80.1%", seats: 100 }
+        ],
+        source: "PU Admission Office 2024",
+        notes: "Merit increased by approximately 1.2% compared to previous year"
+      },
+      {
+        year: 2023,
+        programs: [
+          { name: "BS Computer Science", merit: "80.1%", seats: 200 },
+          { name: "BS Information Technology", merit: "78.6%", seats: 150 },
+          { name: "BS Software Engineering", merit: "79.3%", seats: 120 },
+          { name: "BS Data Science", merit: "78.9%", seats: 100 }
+        ]
+      },
+      {
+        year: 2022,
+        programs: [
+          { name: "BS Computer Science", merit: "78.9%", seats: 180 },
+          { name: "BS Information Technology", merit: "77.4%", seats: 140 },
+          { name: "BS Software Engineering", merit: "78.1%", seats: 110 },
+          { name: "BS Data Science", merit: "77.7%", seats: 90 }
+        ]
+      }
+    ],
+    programs: [
+      {
+        id: "bscs",
+        name: "BS Computer Science",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Comprehensive computer science program with strong theoretical foundation",
+        admissionChances: [
+          { min: 85, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 75, max: 84, rating: 'High', comment: 'Good chance of admission' },
+          { min: 65, max: 74, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 55, max: 64, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 54, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsit",
+        name: "BS Information Technology",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Focuses on practical IT skills and applications",
+        admissionChances: [
+          { min: 83, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 73, max: 82, rating: 'High', comment: 'Good chance of admission' },
+          { min: 63, max: 72, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 53, max: 62, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 52, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsse",
+        name: "BS Software Engineering",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Comprehensive software engineering program with industry focus",
+        admissionChances: [
+          { min: 84, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 74, max: 83, rating: 'High', comment: 'Good chance of admission' },
+          { min: 64, max: 73, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 54, max: 63, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 53, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsds",
+        name: "BS Data Science",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Cutting-edge program in data science and analytics",
+        admissionChances: [
+          { min: 83, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 73, max: 82, rating: 'High', comment: 'Good chance of admission' },
+          { min: 63, max: 72, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 53, max: 62, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 52, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      }
+    ],
+    applicationDeadline: "Varies by program",
+    applicationFee: "PKR 2,000 - 3,000",
+    description: "The University of the Punjab, commonly referred to as Punjab University, is a public research university located in Lahore, Punjab, Pakistan. It is the oldest and one of the most prestigious universities in Pakistan.",
+    website: "https://pu.edu.pk",
+    isImplemented: true,
+    interestingFacts: [
+      {
+        title: "Established in 1882",
+        description: "One of the oldest universities in the Indian subcontinent.",
+        icon: "🏛️"
+      },
+      {
+        title: "Largest University",
+        description: "Largest public sector university in Pakistan with over 30,000 students.",
+        icon: "🎓"
+      },
+      {
+        title: "Research Excellence",
+        description: "Recognized by HEC in the top category of Pakistani universities.",
+        icon: "🔬"
+      },
+      {
+        title: "Alumni Network",
+        description: "Strong alumni network including Nobel laureates and leaders in various fields.",
+        icon: "🌐"
+      }
+    ],
+    meritEstimate: {
+      year: 2025,
+      programs: [
+        { name: "BS Computer Science", estimate: "82-85%", confidence: 'high', trend: 'up' },
+        { name: "BS Information Technology", estimate: "80-83%", confidence: 'high', trend: 'up' },
+        { name: "BS Software Engineering", estimate: "81-84%", confidence: 'high', trend: 'up' },
+        { name: "BS Data Science", estimate: "81-83%", confidence: 'high', trend: 'up' }
+      ],
+      notes: "Merit is expected to increase slightly due to growing competition. Evening program merit is typically 2-3% lower than morning programs."
+    }
+  },
+  {
+    id: "islamicuni",
+    name: "International Islamic University Islamabad",
+    shortName: "IIUI",
+    logo: "/imgs/iiui.jpg",
+    meritData: [
+      {
+        year: 2024,
+        programs: [
+          { name: "BS Computer Science", merit: "76.5%", seats: 120 },
+          { name: "BS Information Technology", merit: "74.8%", seats: 100 },
+          { name: "BS Software Engineering", merit: "75.9%", seats: 80 }
+        ],
+        source: "IIUI Admission Office 2024",
+        notes: "Separate merit lists for male and female campuses"
+      },
+      {
+        year: 2023,
+        programs: [
+          { name: "BS Computer Science", merit: "75.2%", seats: 120 },
+          { name: "BS Information Technology", merit: "73.5%", seats: 100 },
+          { name: "BS Software Engineering", merit: "74.6%", seats: 80 }
+        ]
+      },
+      {
+        year: 2022,
+        programs: [
+          { name: "BS Computer Science", merit: "73.8%", seats: 110 },
+          { name: "BS Information Technology", merit: "72.1%", seats: 90 },
+          { name: "BS Software Engineering", merit: "73.3%", seats: 70 }
+        ]
+      }
+    ],
+    programs: [
+      {
+        id: "bscs",
+        name: "BS Computer Science",
+        testOptions: ["IIU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Comprehensive computer science program with a focus on both theoretical and practical aspects.",
+        admissionChances: [
+          { min: 78, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 68, max: 77, rating: 'High', comment: 'Good chance of admission' },
+          { min: 58, max: 67, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 48, max: 57, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 47, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsit",
+        name: "BS Information Technology",
+        testOptions: ["IIU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Focuses on practical IT skills with industry-relevant curriculum.",
+        admissionChances: [
+          { min: 75, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 65, max: 74, rating: 'High', comment: 'Good chance of admission' },
+          { min: 55, max: 64, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 45, max: 54, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 44, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsse",
+        name: "BS Software Engineering",
+        testOptions: ["IIU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Software engineering program with emphasis on modern development practices.",
+        admissionChances: [
+          { min: 80, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 70, max: 79, rating: 'High', comment: 'Good chance of admission' },
+          { min: 60, max: 69, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 50, max: 59, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 49, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      }
+    ],
+    applicationDeadline: "Varies by program",
+    applicationFee: "PKR 2,500 - 3,500",
+    description: "International Islamic University Islamabad (IIUI) is a public research university in Islamabad, Pakistan. It is known for its focus on Islamic teachings alongside modern education and research.",
+    website: "https://www.iiu.edu.pk",
+    isImplemented: true,
+    interestingFacts: [
+      {
+        title: "Established in 1980",
+        description: "Founded as an international institution with a focus on Islamic teachings and modern education.",
+        icon: "🏛️"
+      },
+      {
+        title: "International Recognition",
+        description: "Recognized by the OIC and has students from over 45 countries.",
+        icon: "🌍"
+      },
+      {
+        title: "Campus",
+        description: "Sprawling campus with separate facilities for male and female students.",
+        icon: "🏫"
+      }
+    ],
+    meritEstimate: {
+      year: 2025,
+      programs: [
+        { name: "BS Computer Science", estimate: "75-80%", confidence: 'high', trend: 'stable' },
+        { name: "BS Information Technology", estimate: "72-77%", confidence: 'high', trend: 'stable' },
+        { name: "BS Software Engineering", estimate: "78-83%", confidence: 'high', trend: 'up' }
+      ],
+      notes: "Merit varies by program and campus. Female campus merit is generally slightly lower than the male campus."
+    }
+  },
+  {
+    id: "pucit",
+    name: "Punjab University College of Information Technology",
+    shortName: "PUCIT",
+    logo: "/imgs/pu.jpg",
+    meritData: [
+      {
+        year: 2024,
+        programs: [
+          { name: "BS Computer Science", merit: "82.5%", seats: 150 },
+          { name: "BS Software Engineering", merit: "80.8%", seats: 120 },
+          { name: "BS Information Technology", merit: "79.2%", seats: 100 }
+        ],
+        source: "PUCIT Admission Office 2024",
+        notes: "Merit increased by approximately 1.5% compared to previous year"
+      },
+      {
+        year: 2023,
+        programs: [
+          { name: "BS Computer Science", merit: "81.0%", seats: 150 },
+          { name: "BS Software Engineering", merit: "79.3%", seats: 120 },
+          { name: "BS Information Technology", merit: "77.7%", seats: 100 }
+        ]
+      },
+      {
+        year: 2022,
+        programs: [
+          { name: "BS Computer Science", merit: "79.5%", seats: 140 },
+          { name: "BS Software Engineering", merit: "78.0%", seats: 110 },
+          { name: "BS Information Technology", merit: "76.2%", seats: 90 }
+        ]
+      }
+    ],
+    programs: [
+      {
+        id: "bscs",
+        name: "BS Computer Science",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Highly competitive program with focus on computer science fundamentals.",
+        admissionChances: [
+          { min: 80, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 70, max: 79, rating: 'High', comment: 'Good chance of admission' },
+          { min: 60, max: 69, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 50, max: 59, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 49, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsswe",
+        name: "BS Software Engineering",
+        testOptions: ["PU Entry Test"],
+        formula: {
+          matriculation: 20,
+          intermediate: 30,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 40
+        },
+        notes: "Focuses on software development and engineering principles.",
+        admissionChances: [
+          { min: 78, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 68, max: 77, rating: 'High', comment: 'Good chance of admission' },
+          { min: 58, max: 67, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 48, max: 57, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 47, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      }
+    ],
+    applicationDeadline: "Varies by program",
+    applicationFee: "PKR 1,500 - 3,000",
+    description: "PUCIT is one of the oldest and most prestigious IT institutions in Pakistan, offering cutting-edge programs in computer science and information technology.",
+    website: "https://pucit.edu.pk",
+    isImplemented: true,
+    interestingFacts: [
+      {
+        title: "Established in 1995",
+        description: "One of the oldest IT institutions in Pakistan.",
+        icon: "🏛️"
+      },
+      {
+        title: "Part of PU",
+        description: "Affiliated with the University of the Punjab, the oldest university in Pakistan.",
+        icon: "🎓"
+      },
+      {
+        title: "Industry Links",
+        description: "Strong connections with IT industry leaders and regular recruitment drives.",
+        icon: "🤝"
+      }
+    ],
+    meritEstimate: {
+      year: 2025,
+      programs: [
+        { name: "BS Computer Science", estimate: "82-85%", confidence: 'high', trend: 'up' },
+        { name: "BS Software Engineering", estimate: "80-83%", confidence: 'high', trend: 'up' }
+      ],
+      notes: "Merit is expected to increase slightly due to higher competition."
+    }
+  },
+  {
+    id: "quaideazam",
+    name: "Quaid-i-Azam University Islamabad",
+    shortName: "QAU",
+    logo: "/imgs/qau.jpg",
+    meritData: [
+      {
+        year: 2024,
+        programs: [
+          { name: "BS Computer Science", merit: "84.7%", seats: 100 },
+          { name: "BS Information Technology", merit: "82.3%", seats: 80 },
+          { name: "BS Software Engineering", merit: "83.5%", seats: 70 }
+        ],
+        source: "QAU Admission Office 2024",
+        notes: "Merit shows an increasing trend due to high demand"
+      },
+      {
+        year: 2023,
+        programs: [
+          { name: "BS Computer Science", merit: "83.2%", seats: 100 },
+          { name: "BS Information Technology", merit: "81.0%", seats: 80 },
+          { name: "BS Software Engineering", merit: "82.1%", seats: 70 }
+        ]
+      },
+      {
+        year: 2022,
+        programs: [
+          { name: "BS Computer Science", merit: "81.8%", seats: 100 },
+          { name: "BS Information Technology", merit: "79.5%", seats: 80 },
+          { name: "BS Software Engineering", merit: "80.7%", seats: 70 }
+        ]
+      }
+    ],
+    programs: [
+      {
+        id: "bscs",
+        name: "BS Computer Science",
+        testOptions: ["NTS NAT"],
+        formula: {
+          matriculation: 25,
+          intermediate: 25,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 50
+        },
+        notes: "Focuses on theoretical and applied computer science.",
+        admissionChances: [
+          { min: 85, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 75, max: 84, rating: 'High', comment: 'Good chance of admission' },
+          { min: 65, max: 74, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 55, max: 64, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 54, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      },
+      {
+        id: "bsit",
+        name: "BS Information Technology",
+        testOptions: ["NTS NAT"],
+        formula: {
+          matriculation: 25,
+          intermediate: 25,
+          entryTest: 50
+        },
+        minimumCriteria: {
+          matriculation: 60,
+          intermediate: 60,
+          entryTest: 50
+        },
+        notes: "Focuses on practical IT skills and applications.",
+        admissionChances: [
+          { min: 83, max: 100, rating: 'Very High', comment: 'Excellent chance of admission' },
+          { min: 73, max: 82, rating: 'High', comment: 'Good chance of admission' },
+          { min: 63, max: 72, rating: 'Medium', comment: 'Moderate chance of admission' },
+          { min: 53, max: 62, rating: 'Low', comment: 'Low chance of admission' },
+          { min: 0, max: 52, rating: 'Very Low', comment: 'Unlikely to get admission' }
+        ]
+      }
+    ],
+    applicationDeadline: "Varies by program",
+    applicationFee: "PKR 2,000 - 3,500",
+    description: "Quaid-i-Azam University is a public research university in Islamabad, Pakistan. It is ranked as the top university in Pakistan by QS World University Rankings.",
+    website: "https://qau.edu.pk",
+    isImplemented: true,
+    interestingFacts: [
+      {
+        title: "Top Ranked",
+        description: "Consistently ranked as the top university in Pakistan by HEC.",
+        icon: "🏆"
+      },
+      {
+        title: "Research Focus",
+        description: "Strong emphasis on research with numerous research centers.",
+        icon: "🔬"
+      },
+      {
+        title: "Beautiful Campus",
+        description: "Spread over 1,500 acres with scenic views of the Margalla Hills.",
+        icon: "🌄"
+      }
+    ],
+    meritEstimate: {
+      year: 2025,
+      programs: [
+        { name: "BS Computer Science", estimate: "84-87%", confidence: 'high', trend: 'up' },
+        { name: "BS Information Technology", estimate: "82-85%", confidence: 'high', trend: 'up' }
+      ],
+      notes: "Merit is expected to remain competitive due to high demand."
+    }
+  },
+  {
     id: "fast",
     name: "FAST National University",
     shortName: "FAST",

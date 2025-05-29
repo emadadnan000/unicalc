@@ -20,6 +20,25 @@ export interface UniversityTestPattern {
 
 const testPatterns: UniversityTestPattern[] = [
   {
+    id: "pu",
+    name: "PU Entry Test",
+    pattern: {
+      totalMCQs: 100,
+      duration: "1 hour 30 minutes",
+      totalMarks: 100,
+      isComputerBased: true,
+      hasNegativeMarking: true,
+      allowsCalculator: false,
+      subjects: [
+        { name: "Mathematics", mcqs: 30 },
+        { name: "Physics", mcqs: 30 },
+        { name: "English", mcqs: 20 },
+        { name: "IQ/General Knowledge", mcqs: 20 }
+      ],
+      notes: "Negative marking: -0.25 for each incorrect answer. Calculators are not allowed. Original CNIC/B-Form is mandatory for the test."
+    }
+  },
+  {
     id: "nust",
     name: "NUST (NET)",
     pattern: {
@@ -87,6 +106,64 @@ const testPatterns: UniversityTestPattern[] = [
         { name: "English", mcqs: 20 },
         { name: "Subject Specific", mcqs: 30 }
       ]
+    }
+  },
+  {
+    id: "pucit",
+    name: "PUCIT Entry Test",
+    pattern: {
+      totalMCQs: 100,
+      duration: "2 hours",
+      totalMarks: 100,
+      isComputerBased: true,
+      hasNegativeMarking: true,
+      allowsCalculator: false,
+      subjects: [
+        { name: "Mathematics", mcqs: 40 },
+        { name: "Physics", mcqs: 30 },
+        { name: "English", mcqs: 20 },
+        { name: "IQ/General Knowledge", mcqs: 10 }
+      ],
+      notes: "Negative marking: 0.25 marks deducted for each wrong answer. The test is conducted online."
+    }
+  },
+  {
+    id: "quaideazam",
+    name: "QAU Entry Test (NTS-NAT)",
+    pattern: {
+      totalMCQs: 100,
+      duration: "2 hours",
+      totalMarks: 100,
+      isComputerBased: true,
+      hasNegativeMarking: true,
+      allowsCalculator: false,
+      subjects: [
+        { name: "Mathematics", mcqs: 30 },
+        { name: "Physics", mcqs: 30 },
+        { name: "English", mcqs: 20 },
+        { name: "IQ/General Knowledge", mcqs: 20 }
+      ],
+      notes: "Negative marking: 0.25 marks deducted for each wrong answer. The test is conducted by NTS."
+    }
+  },
+  {
+    id: "islamicuni",
+    name: "IIUI Entry Test",
+    pattern: {
+      totalMCQs: 120,
+      duration: "2.5 hours",
+      totalMarks: 120,
+      isComputerBased: true,
+      hasNegativeMarking: true,
+      allowsCalculator: false,
+      subjects: [
+        { name: "Mathematics", mcqs: 40 },
+        { name: "Physics", mcqs: 30 },
+        { name: "English", mcqs: 30 },
+        { name: "Islamic Studies", mcqs: 10 },
+        { name: "General Knowledge", mcqs: 10 }
+      ],
+      notes: "Negative marking: 0.25 marks deducted for each wrong answer. Islamic Studies section is compulsory for all candidates."
     }
   },
   {
