@@ -222,7 +222,7 @@ const testPatterns: UniversityTestPattern[] = [
     name: "FAST Entry Test",
     pattern: {
       totalMCQs: 120,
-      duration: "3 hours",
+      duration: "2 hours",
       totalMarks: 100,
       isComputerBased: true,
       hasNegativeMarking: true,
