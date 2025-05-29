@@ -2,6 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove focus outline while maintaining accessibility */
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* For WebKit browsers */
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* For Firefox */
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* For IE11 */
+input:focus {
+  outline: none !important;
+}
+
+/* For Edge */
+input:focus-visible {
+  outline: none !important;
+}
+
 :root {
   --electric-blue: rgb(0, 180, 255);
   --soft-cyan: rgb(123, 213, 245);
