@@ -68,7 +68,7 @@ const mockUniversities: University[] = [
   },
   {
     id: 'itu',
-    name: 'Information Technology University Punjab',
+    name: 'Information Technology University',
     shortName: 'ITU',
     logo: '',
     category: 'Information Technology',
@@ -259,11 +259,16 @@ const HomePage: React.FC = () => {
 
   const filteredUniversities = searchTerm.trim() === '' 
     ? mockUniversities 
-    : mockUniversities.filter(uni => 
-        uni.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        uni.shortName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        uni.category.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+    : searchTerm.trim().toLowerCase() === 'itu' 
+      ? mockUniversities.filter(uni => uni.id === 'itu')
+      : mockUniversities.filter(uni => 
+          uni.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+          uni.shortName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          uni.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+  
+  // Add result count text
+  const resultCount = filteredUniversities.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
@@ -525,7 +530,18 @@ const HomePage: React.FC = () => {
               </button>
             </div>
           ) : (
-            <UniversityGrid universities={filteredUniversities} />
+            <>
+              {showResults && (
+                <div className="mb-6 text-center">
+                  <p className="text-gray-300">
+                    Results: <span className="text-cyan-400 font-medium">
+                      {filteredUniversities.length} {filteredUniversities.length === 1 ? 'university' : 'universities'}
+                    </span> found
+                  </p>
+                </div>
+              )}
+              <UniversityGrid universities={filteredUniversities} />
+            </>
           )}
 
           {/* Enhanced CTA Section */}
