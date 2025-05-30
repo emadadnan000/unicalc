@@ -368,7 +368,7 @@ const HomePage: React.FC = () => {
                       animationDelay: '0.2s'
                     }}
                   >
-                    100+
+                    1000+
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Students Helped</p>
