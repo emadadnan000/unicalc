@@ -1120,14 +1120,13 @@ const CalculatorPage: React.FC = () => {
               
               {/* Score Display */}
               <div className="flex flex-col items-center mb-4 sm:mb-6">
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 flex items-center justify-center rounded-full bg-midnight-blue/30 border-4 sm:border-[6px] border-electric-blue/50 shadow-lg shadow-electric-blue/20 mb-3 sm:mb-4">
+                <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 flex items-center justify-center rounded-full bg-midnight-blue/30 border-4 sm:border-[6px] border-electric-blue/50 shadow-lg shadow-electric-blue/20 mb-3 sm:mb-4">
                   <div className="absolute inset-0 rounded-full border-4 border-electric-blue/10 animate-pulse"></div>
-                  <div className="text-center w-full px-2">
-                    <span className="block text-2xl sm:text-3xl md:text-4xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
-                    <span className="text-xs sm:text-sm text-gray-300 font-medium">Aggregate</span>
+                  <div className="text-center w-full px-3 py-2">
+                    <span className="block text-3xl sm:text-4xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
                     {admissionPrediction && (
-                      <div className="mt-1">
-                        <span className={`inline-block px-1.5 py-0.5 rounded-full text-[10px] ${admissionPrediction.rating === 'Very Low' ? 'px-1 text-[9px]' : 'sm:text-xs'} ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium`}>
+                      <div className="mt-1.5">
+                        <span className={`inline-block px-1.5 py-0.5 rounded-full text-[11px] leading-none ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium`}>
                           {admissionPrediction.rating} {admissionPrediction.rating === 'Very Low' ? '' : 'Chance'}
                         </span>
                       </div>
