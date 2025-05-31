@@ -7,7 +7,7 @@ import testPatterns, { UniversityTestPattern } from '../../data/testPatterns';
 import EligibilityTable from '../EligibilityTable';
 import MeritAnalysis from '../MeritAnalysis';
 
-type EducationType = 'FSc' | 'A-Level';
+type EducationType = 'FSc' | 'A-Level-Immediate' | 'A-Level-GapYear';
 
 interface FormData {
   matricMarks: { obtained: number; total: number };
@@ -208,8 +208,8 @@ const CalculatorPage: React.FC = () => {
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   
   const [formData, setFormData] = useState<FormData>({
-    matricMarks: { obtained: 0, total: 1100 },
-    fscMarks: { obtained: 0, total: 1100 },
+    matricMarks: { obtained: 0, total: 1200 },
+    fscMarks: { obtained: 0, total: 1200 },
     entryTestType: '',
     entryTestMarks: { obtained: 0, total: 100 },
     educationType: 'FSc'
@@ -238,11 +238,25 @@ const CalculatorPage: React.FC = () => {
   }, [universityId]);
 
   useEffect(() => {
-    // Hide SAT info when test type changes
-    if (formData.entryTestType !== 'SAT') {
-      setSatInfoVisible(false);
-    } else {
+    // Update entry test marks total based on test type
+    if (formData.entryTestType === 'SAT') {
+      setFormData(prev => ({
+        ...prev,
+        entryTestMarks: {
+          ...prev.entryTestMarks,
+          total: 1600
+        }
+      }));
       setSatInfoVisible(true);
+    } else if (formData.entryTestType === 'NAT' || formData.entryTestType === 'NET') {
+      setFormData(prev => ({
+        ...prev,
+        entryTestMarks: {
+          ...prev.entryTestMarks,
+          total: 100
+        }
+      }));
+      setSatInfoVisible(false);
     }
   }, [formData.entryTestType]);
 
@@ -322,24 +336,28 @@ const CalculatorPage: React.FC = () => {
     
     let calculatedAggregate = 0;
     
-    // Special case for NUST with A-Level students (25% O-Level weightage)
-    if (university?.id === "nust" && formData.educationType === 'A-Level') {
-      calculatedAggregate = 
-        (matricPercentage * 0.25) + 
-        (fscPercentage * formula.intermediate) + 
-        (testPercentage * formula.entryTest);
-    } 
-    // General case with uniform A-Level 10% bonus
+    // Special case for FAST University A-Level students
+    if (university?.id === "fast") {
+      // For A-Level Immediate: 50% O-Level + 50% Entry Test
+      if (formData.educationType === 'A-Level-Immediate') {
+        calculatedAggregate = 
+          (matricPercentage * 0.5) + 
+          (testPercentage * 0.5);
+      }
+      // For A-Level Gap Year: Use standard formula (matric + fsc + test)
+      else if (formData.educationType === 'A-Level-GapYear') {
+        calculatedAggregate = 
+          (matricPercentage * formula.matriculation) + 
+          (fscPercentage * formula.intermediate) + 
+          (testPercentage * formula.entryTest);
+      }
+    }
+    // For all other universities and education types, use the standard formula
     else {
       calculatedAggregate = 
         (matricPercentage * formula.matriculation) + 
         (fscPercentage * formula.intermediate) + 
         (testPercentage * formula.entryTest);
-        
-      // Apply A-Level bonus for other universities 
-      if (formData.educationType === 'A-Level' && university?.id !== "nust") {
-        calculatedAggregate *= 1.1; // 10% increase for A-Level students
-      }
     }
 
     const finalAggregate = Math.min(100, calculatedAggregate);
@@ -829,21 +847,25 @@ const CalculatorPage: React.FC = () => {
               <div className="space-y-2 sm:space-y-3">
                 <label className="block text-xs sm:text-sm font-medium text-gray-300">Education System</label>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  {['FSc', 'A-Level'].map(type => (
+                  {[
+                    { value: 'FSc', label: 'FSc' },
+                    { value: 'A-Level-Immediate', label: 'A-Levels (Immediate)' },
+                    { value: 'A-Level-GapYear', label: 'A-Levels (Gap Year)' }
+                  ].map(({ value, label }) => (
                     <button
-                      key={type}
-                      onClick={() => handleInputChange('educationType', null, type as EducationType)}
+                      key={value}
+                      onClick={() => handleInputChange('educationType', null, value as EducationType)}
                       className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded transition-all duration-300 transform hover:scale-105 ${
-                        formData.educationType === type 
+                        formData.educationType === value 
                           ? 'bg-electric-blue text-deep-space shadow-lg' 
                           : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue'
                       }`}
                     >
-                      {type}
+                      {label}
                     </button>
                   ))}
                 </div>
-                {formData.educationType === 'A-Level' && (
+                {(formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && (
                   <p className="text-xs text-electric-blue italic">
                     {/* A-Level students receive a 10% bonus in aggregate calculation */}
                   </p>
@@ -877,7 +899,12 @@ const CalculatorPage: React.FC = () => {
                     <span className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 text-[10px] sm:text-xs">total</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400">Contributes {selectedProgram.formula.matriculation * 100}% to your aggregate score</p>
+                <p className="text-xs text-gray-400">
+                  {formData.educationType === 'A-Level-Immediate' 
+                    ? 'Contributes 50% to your aggregate score' 
+                    : `Contributes ${selectedProgram.formula.matriculation * 100}% to your aggregate score`
+                  }
+                </p>
               </div>
 
               {/* FSc/A-Level Marks */}
@@ -907,7 +934,12 @@ const CalculatorPage: React.FC = () => {
                     <span className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 text-[10px] sm:text-xs">total</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400">Contributes {selectedProgram.formula.intermediate * 100}% to your aggregate score</p>
+                <p className="text-xs text-gray-400">
+                  {formData.educationType === 'A-Level-Immediate' 
+                    ? 'Contributes 0% to your aggregate score' 
+                    : `Contributes ${selectedProgram.formula.intermediate * 100}% to your aggregate score`
+                  }
+                </p>
               </div>
 
               {/* Entry Test Selection */}
@@ -928,11 +960,6 @@ const CalculatorPage: React.FC = () => {
                     </button>
                   ))}
                 </div>
-                {satInfoVisible && (
-                  <div className="mt-2 p-3 bg-soft-cyan/10 rounded border border-soft-cyan/30 text-sm text-gray-300">
-                    <p><strong>Note:</strong> For SAT, FAST typically requires a minimum score of 1100. The calculation here is an estimate; please verify the current requirements on the FAST website.</p>
-                  </div>
-                )}
               </div>
 
               {/* Entry Test Marks */}
@@ -1025,7 +1052,7 @@ const CalculatorPage: React.FC = () => {
                                 {testPattern.pattern.subjects.map((subject, index) => (
                                   <li key={index} className="flex justify-between items-center bg-midnight-blue/60 p-3 rounded-lg">
                                     <span className="text-gray-300 text-sm">{subject.name}</span>
-                                    <span className="text-white font-medium text-sm bg-electric-blue/20 px-3 py-1 rounded-full">
+                                    <span className="text-gray-300 text-sm">
                                       {subject.mcqs} MCQs
                                     </span>
                                   </li>
@@ -1093,14 +1120,14 @@ const CalculatorPage: React.FC = () => {
               
               {/* Score Display */}
               <div className="flex flex-col items-center mb-4 sm:mb-6">
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center rounded-full bg-midnight-blue/30 border-4 sm:border-[6px] border-electric-blue/50 shadow-lg shadow-electric-blue/20 mb-3 sm:mb-4">
+                <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 flex items-center justify-center rounded-full bg-midnight-blue/30 border-4 sm:border-[6px] border-electric-blue/50 shadow-lg shadow-electric-blue/20 mb-3 sm:mb-4">
                   <div className="absolute inset-0 rounded-full border-4 border-electric-blue/10 animate-pulse"></div>
                   <div className="text-center w-full px-2">
-                    <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
-                    <span className="text-sm sm:text-base text-gray-300 font-medium">Aggregate</span>
+                    <span className="block text-2xl sm:text-3xl md:text-4xl font-bold text-electric-blue">{aggregate.toFixed(2)}%</span>
+                    <span className="text-xs sm:text-sm text-gray-300 font-medium">Aggregate</span>
                     {admissionPrediction && (
-                      <div className="mt-2">
-                        <span className={`inline-block px-2 py-1 rounded-full text-xs ${admissionPrediction.rating === 'Very Low' ? 'px-1.5 text-[11px]' : 'sm:text-sm'} ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium`}>
+                      <div className="mt-1">
+                        <span className={`inline-block px-1.5 py-0.5 rounded-full text-[10px] ${admissionPrediction.rating === 'Very Low' ? 'px-1 text-[9px]' : 'sm:text-xs'} ${getRatingColor(admissionPrediction.rating)} text-deep-space font-medium`}>
                           {admissionPrediction.rating} {admissionPrediction.rating === 'Very Low' ? '' : 'Chance'}
                         </span>
                       </div>
@@ -1109,7 +1136,7 @@ const CalculatorPage: React.FC = () => {
                 </div>
                 {universityId === 'fast' && (
                   <div className="mt-2 text-xs sm:text-sm text-gray-400 text-center px-4 py-2 bg-midnight-blue/30 rounded-lg">
-                    Based on NU Test (not SAT/NAT)
+                    Prediction based on NU Test only (SAT/NAT ignored)
                   </div>
                 )}
               </div>
@@ -1121,22 +1148,32 @@ const CalculatorPage: React.FC = () => {
                   <div className="flex justify-between text-xs sm:text-sm">
                     <span className="text-gray-400">
                       {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} 
-                      {university?.id === "nust" && formData.educationType === 'A-Level' ? 
-                        ' (25%)' : ` (${selectedProgram.formula.matriculation * 100}%)`}:
+                      {formData.educationType === 'A-Level-Immediate' ? ' (50%)' : 
+                       university?.id === "nust" && formData.educationType === 'A-Level-GapYear' ? ' (25%)' : 
+                       ` (${selectedProgram.formula.matriculation * 100}%)`}:
                     </span>
                     <span className="text-electric-blue font-medium">
                       {((formData.matricMarks.obtained / formData.matricMarks.total) * 100).toFixed(2)}%
                     </span>
                   </div>
                   <div className="flex justify-between text-xs sm:text-sm">
-                    <span className="text-gray-400">{formData.educationType === 'FSc' ? 'Intermediate' : 'A-Level'} ({selectedProgram.formula.intermediate * 100}%):</span>
+                    <span className="text-gray-400">
+                      {formData.educationType === 'FSc' 
+                        ? 'Intermediate' 
+                        : formData.educationType === 'A-Level-Immediate' 
+                          ? 'A-Level (Not Counted)' 
+                          : 'A-Level'}
+                      {formData.educationType !== 'A-Level-Immediate' && ` (${selectedProgram.formula.intermediate * 100}%)`}:
+                    </span>
                     <span className="text-electric-blue font-medium">
                       {((formData.fscMarks.obtained / formData.fscMarks.total) * 100).toFixed(2)}%
                     </span>
                   </div>
                   {selectedProgram.formula.entryTest > 0 && (
                     <div className="flex justify-between text-xs sm:text-sm">
-                      <span className="text-gray-400">{formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%):</span>
+                      <span className="text-gray-400">
+                        {formData.entryTestType} ({formData.educationType === 'A-Level-Immediate' ? '50' : selectedProgram.formula.entryTest * 100}%):
+                      </span>
                       <span className="text-electric-blue font-medium">
                         {((formData.entryTestMarks.obtained / formData.entryTestMarks.total) * 100).toFixed(2)}%
                       </span>
@@ -1148,7 +1185,7 @@ const CalculatorPage: React.FC = () => {
                       <span className="text-gray-300 font-medium">Not included in this calculator</span>
                     </div>
                   )}
-                  {formData.educationType === 'A-Level' && university?.id !== "nust" && (
+                  {(formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && university?.id !== "nust" && (
                     <div className="flex justify-between text-xs sm:text-sm">
                       {/* <span className="text-gray-400">A-Level Bonus (10%):</span> */}
                       {/* <span className="text-green-400 font-medium">Applied</span> */}
@@ -1165,12 +1202,13 @@ const CalculatorPage: React.FC = () => {
               <div className="mt-4 flex items-start gap-2 text-sm p-4 bg-electric-blue/10 rounded-lg border border-electric-blue/30">
                 <Info className="h-5 w-5 flex-shrink-0 text-electric-blue" />
                 <p className="text-gray-300">
-                  {university.id === "nust" && formData.educationType === 'A-Level' ? (
+                  {formData.educationType === 'A-Level-Immediate' ? (
+                    <>Based on the {university.name} admission formula for A-Levels (Immediate): O-Level (50%) + {formData.entryTestType} (50%)</>
+                  ) : university.id === "nust" && formData.educationType === 'A-Level-GapYear' ? (
                     <>Based on the {university.name} admission formula for A-Level students: O-Level (25%) + A-Level ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   ) : (
-                    <>Based on the {university.name} admission formula: {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} ({selectedProgram.formula.matriculation * 100}%) + {formData.educationType} ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
+                    <>Based on the {university.name} admission formula: {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} ({selectedProgram.formula.matriculation * 100}%) + {formData.educationType === 'A-Level-GapYear' ? 'A-Level' : 'Intermediate'} ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   )}
-                  {formData.educationType === 'A-Level' && university.id !== "nust" && ' with 10% additional weightage for A-Level students.'}
                   {university.id === "itu" && ' plus 20% weightage for interview performance.'}
                 </p>
               </div>
