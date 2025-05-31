@@ -417,7 +417,7 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Enhanced Search Bar with full-width background */}
-            <div className={`w-full max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-12 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '1000ms'}}>
+            <div className={`w-full max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto mb-2 sm:mb-4 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '1000ms'}}>
               <div className="relative group">
                 {/* Full-width animated background */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/30 via-blue-500/30 to-purple-500/30 rounded-2xl opacity-75 blur-lg group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
@@ -453,24 +453,16 @@ const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Animated scroll indicator */}
-            <div className={`transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{transitionDelay: '1200ms'}}>
-              <div className="flex flex-col items-center space-y-3 sm:space-y-4 animate-bounce">
-                <span className="text-gray-400 text-xs sm:text-sm">Scroll to explore</span>
-                <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 rounded-full flex justify-center">
-                  <div className="w-1 h-2 sm:h-3 bg-gray-400 rounded-full mt-1 sm:mt-2 animate-pulse"></div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
 
       {/* Universities Section */}
-      <section id="universities" className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <section id="universities" className="relative py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-cyan-500/15 to-blue-500/15 backdrop-blur-sm border border-cyan-500/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-cyan-500/15 to-blue-500/15 backdrop-blur-sm border border-cyan-500/30 rounded-full px-4 sm:px-6 py-1.5 sm:py-2 mb-4 sm:mb-6 hover:scale-105 transition-transform duration-300">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 animate-spin" style={{animationDuration: '3s'}} />
               <span className="text-sm sm:text-base text-cyan-400 font-semibold">Featured Universities</span>
             </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, BarChart2, BookOpen, Award, ShieldCheck, Heart, Lightbulb, GraduationCap, Code, ExternalLink, MessageCircle, Linkedin, Github, Instagram, Globe, Smartphone } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const FeatureCard = ({ icon: Icon, title, children, delay = 0 }: { icon: React.ElementType, title: string, children: React.ReactNode, delay?: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -178,42 +179,51 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <a 
               href="https://linkedin.com/in/azanw" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95 group"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95 group"
+              aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 transition-transform duration-300 group-hover:rotate-12" />
-              LinkedIn
+              <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
             </a>
             <a 
               href="https://github.com/azannw" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-800 hover:bg-gray-700 text-gray-100 rounded-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/30 active:scale-95 group"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gray-700 text-gray-100 rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/30 active:scale-95 group"
+              aria-label="GitHub"
             >
-              <Github className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 transition-transform duration-300 group-hover:rotate-12" />
-              GitHub
+              <Github className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
             </a>
             <a 
               href="https://instagram.com/csconnect.pk" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 active:scale-95 group"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 active:scale-95 group"
+              aria-label="Instagram"
             >
-              <Instagram className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 transition-transform duration-300 group-hover:rotate-12" />
-              Instagram
+              <Instagram className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
             </a>
             <a 
               href="https://csconnect.pk" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/30 active:scale-95 group font-semibold"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/30 active:scale-95 group"
+              aria-label="Website"
             >
-              <Globe className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 transition-transform duration-300 group-hover:rotate-12" />
-              CSConnect.pk
+              <Globe className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
+            </a>
+            <a 
+              href="https://x.com/azannw" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-900 text-white rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/30 active:scale-95 group"
+              aria-label="X (Twitter)"
+            >
+              <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
             </a>
           </div>
         </AnimatedSection>

@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const headerRef = React.useRef<HTMLElement>(null);
+  const isHomePage = location.pathname === '/';
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -55,7 +56,7 @@ const Header: React.FC = () => {
     <header 
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled || mobileMenuOpen ? 'bg-midnight-blue bg-opacity-80 backdrop-blur shadow-md' : 'bg-transparent'
+        isHomePage || isScrolled || mobileMenuOpen ? 'bg-midnight-blue bg-opacity-80 backdrop-blur shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 py-4">

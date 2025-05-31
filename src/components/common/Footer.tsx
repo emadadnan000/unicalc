@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin } from 'lucide-react';
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaTwitch, FaWhatsapp, FaWhatsappSquare } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -62,14 +63,14 @@ const Footer: React.FC = () => {
               <Mail size={18} />
             </a> */}
             <a 
-              href="https://chat.whatsapp.com/Cat16toNG2FHVNbSuel3FG" 
+              href="https://x.com/azannw" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-green-500 transition-colors duration-300 transform hover:scale-110"
-              aria-label="WhatsApp"
-              title="WhatsApp"
+              className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+              aria-label="X"
+              title="X"
             >
-              <FaWhatsapp size={20} />
+              <FaXTwitter size={20} />
             </a>
           </div>
         </div>

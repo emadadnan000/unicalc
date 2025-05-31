@@ -336,7 +336,7 @@ const CalculatorPage: React.FC = () => {
     
     let calculatedAggregate = 0;
     
-    // Special case for FAST University A-Level students
+    // Special case for FAST University
     if (university?.id === "fast") {
       // For A-Level Immediate: 50% O-Level + 50% Entry Test
       if (formData.educationType === 'A-Level-Immediate') {
@@ -344,8 +344,8 @@ const CalculatorPage: React.FC = () => {
           (matricPercentage * 0.5) + 
           (testPercentage * 0.5);
       }
-      // For A-Level Gap Year: Use standard formula (matric + fsc + test)
-      else if (formData.educationType === 'A-Level-GapYear') {
+      // For A-Level Gap Year or FSc: Use standard formula (matric + fsc + test)
+      else if (formData.educationType === 'A-Level-GapYear' || formData.educationType === 'FSc') {
         calculatedAggregate = 
           (matricPercentage * formula.matriculation) + 
           (fscPercentage * formula.intermediate) + 
