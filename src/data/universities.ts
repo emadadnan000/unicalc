@@ -412,9 +412,9 @@ const universities: University[] = [
         name: "BS Computer Science",
         testOptions: ["PU Entry Test"],
         formula: {
-          matriculation: 20,
-          intermediate: 30,
-          entryTest: 50
+          matriculation: 0.20,
+          intermediate: 0.30,
+          entryTest: 0.50
         },
         minimumCriteria: {
           matriculation: 60,
