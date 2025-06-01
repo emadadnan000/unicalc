@@ -524,9 +524,9 @@ const universities: University[] = [
         name: "BS Computer Science",
         testOptions: ["NTS NAT"],
         formula: {
-          matriculation: 25,
-          intermediate: 25,
-          entryTest: 50
+          matriculation: 0.25,
+          intermediate: 0.25,
+          entryTest: 0.5
         },
         minimumCriteria: {
           matriculation: 60,
