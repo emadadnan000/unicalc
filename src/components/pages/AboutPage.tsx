@@ -216,15 +216,15 @@ const AboutPage: React.FC = () => {
             >
               <Globe className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
             </a>
-            <a 
+            {/* <a 
               href="https://x.com/azannw" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-900 text-white rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/30 active:scale-95 group"
               aria-label="X (Twitter)"
             >
-              <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" />
-            </a>
+              <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-12" /> */}
+            {/* </a> */}
           </div>
         </AnimatedSection>
       </div>

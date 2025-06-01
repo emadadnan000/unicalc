@@ -63,14 +63,14 @@ const Footer: React.FC = () => {
               <Mail size={18} />
             </a> */}
             <a 
-              href="https://x.com/azannw" 
+              href="https://chat.whatsapp.com/IM8Yw2D2Fv2EwbHqnCqVhn" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
-              aria-label="X"
-              title="X"
+              className="text-gray-400 hover:text-green-500 transition-colors duration-300 transform hover:scale-110"
+              aria-label="WhatsApp"
+              title="WhatsApp"
             >
-              <FaXTwitter size={20} />
+              <FaWhatsapp size={20} />
             </a>
           </div>
         </div>
