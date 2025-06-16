@@ -1354,7 +1354,7 @@ const CalculatorPage: React.FC = () => {
         <div className="max-w-2xl mx-auto mt-6 sm:mt-8">
           <div className="flex justify-center">
             <a
-              href="https://chat.whatsapp.com/Cat16toNG2FHVNbSuel3FG"
+              href="https://chat.whatsapp.com/FAr6YQiz3TqAcWgtdqtd7j"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-md text-xs sm:text-base font-medium"

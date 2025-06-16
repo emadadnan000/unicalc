@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Calculator, MessageCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Header: React.FC = () => {
@@ -132,13 +133,13 @@ const Header: React.FC = () => {
                 About
               </Link>
               <a 
-                href="https://chat.whatsapp.com/Cat16toNG2FHVNbSuel3FG" 
+                href="https://chat.whatsapp.com/FAr6YQiz3TqAcWgtdqtd7j" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="nav-link py-3 px-4 hover:bg-blue-900/30 rounded-lg transition-colors flex items-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <MessageCircle className="w-5 h-5 mr-3" />
+                <FaWhatsapp className="w-5 h-5 mr-3" />
                 Join WhatsApp Group
               </a>
             </div>

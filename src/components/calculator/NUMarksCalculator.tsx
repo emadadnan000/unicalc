@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Calculator } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import './nu-calculator.css';
 
 interface SectionData {
@@ -122,45 +123,59 @@ const NUMarksCalculator: React.FC<NUMarksCalculatorProps> = ({ isOpen, onClose }
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
-      <div className="nu-calculator bg-slate-900 rounded-lg w-full max-w-4xl max-h-[95vh] sm:max-h-screen overflow-y-auto shadow-2xl">
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="nu-calculator bg-slate-900 rounded-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-700">
-          <h2 className="text-lg sm:text-2xl font-bold text-white flex items-center">
-            <Calculator className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
+        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-slate-700">
+          <h2 className="text-lg sm:text-xl font-bold text-white flex items-center">
+            <Calculator className="mr-2 h-5 w-5" />
             NU Marks Calculator
           </h2>
           <button
             onClick={onClose}
             className="text-white hover:text-slate-300 p-2 rounded-md hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500"
           >
-            <X className="h-5 w-5 sm:h-6 sm:w-6" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Input Sections */}
+        <div className="p-3 sm:p-4">
+          {/* Result Display - Show at top when available */}
+          {result !== null && (
+            <div className="mb-4 bg-gradient-to-r from-green-800 to-green-700 rounded-lg p-3 border border-green-600 text-center">
+              <h3 className="text-base font-bold text-white mb-1">Your NU Score</h3>
+              <div className="text-xl sm:text-2xl font-bold text-green-200">
+                {result.toFixed(2)} / 100
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Input Sections - Compact Design */}
             {Object.entries(sectionLimits).map(([section, config]) => (
-              <div key={section} className="bg-slate-800 rounded-lg p-3 sm:p-4 border border-slate-700">
-                <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
+              <div key={section} className="bg-slate-800 rounded-lg p-3 border border-slate-700">
+                <h3 className="text-sm font-semibold text-white mb-2">
                   {config.name} ({config.total} MCQs)
                 </h3>
                 
-                <div className="space-y-3 sm:space-y-4">
+                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-sm font-medium text-slate-200 mb-2">
-                      Attempted MCQs
-                    </label>
+                    <label className="block text-xs text-slate-300 mb-1">Attempted</label>
                     <input
                       type="number"
                       min="0"
                       max={config.total}
                       value={formData[section as keyof FormData].attempted}
                       onChange={(e) => handleInputChange(section as keyof FormData, 'attempted', e.target.value)}
-                      className="w-full px-3 sm:px-4 py-3 text-base bg-slate-700 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
-                      placeholder={`Enter 0-${config.total}`}
+                      className="w-full px-2 py-2 text-sm bg-slate-700 border border-slate-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                      placeholder={`0-${config.total}`}
                     />
                     {errors[`${section}_attempted`] && (
                       <p className="text-red-400 text-xs mt-1">{errors[`${section}_attempted`]}</p>
@@ -168,17 +183,15 @@ const NUMarksCalculator: React.FC<NUMarksCalculatorProps> = ({ isOpen, onClose }
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-200 mb-2">
-                      Correct MCQs
-                    </label>
+                    <label className="block text-xs text-slate-300 mb-1">Correct</label>
                     <input
                       type="number"
                       min="0"
                       max={Number(formData[section as keyof FormData].attempted) || config.total}
                       value={formData[section as keyof FormData].correct}
                       onChange={(e) => handleInputChange(section as keyof FormData, 'correct', e.target.value)}
-                      className="w-full px-3 sm:px-4 py-3 text-base bg-slate-700 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
-                      placeholder={formData[section as keyof FormData].attempted ? `Enter 0-${formData[section as keyof FormData].attempted}` : 'Enter attempted first'}
+                      className="w-full px-2 py-2 text-sm bg-slate-700 border border-slate-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                      placeholder={formData[section as keyof FormData].attempted ? `0-${formData[section as keyof FormData].attempted}` : '0'}
                     />
                     {errors[`${section}_correct`] && (
                       <p className="text-red-400 text-xs mt-1">{errors[`${section}_correct`]}</p>
@@ -190,34 +203,20 @@ const NUMarksCalculator: React.FC<NUMarksCalculatorProps> = ({ isOpen, onClose }
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
+          <div className="flex gap-2 mt-4">
             <button
               onClick={calculateMarks}
-              className="flex-1 bg-slate-600 hover:bg-slate-700 active:bg-slate-800 text-white font-medium py-3 sm:py-4 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 text-base transition-colors duration-200"
+              className="flex-1 bg-slate-600 hover:bg-slate-700 active:bg-slate-800 text-white font-medium py-2.5 px-4 rounded text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 transition-colors duration-200"
             >
               Calculate NU Marks
             </button>
             <button
               onClick={resetForm}
-              className="flex-1 bg-slate-700 hover:bg-slate-800 active:bg-slate-900 text-white font-medium py-3 sm:py-4 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 text-base transition-colors duration-200"
+              className="bg-slate-700 hover:bg-slate-800 active:bg-slate-900 text-white font-medium py-2.5 px-4 rounded text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 transition-colors duration-200"
             >
-              Reset Form
+              Reset
             </button>
           </div>
-
-          {/* Result Display */}
-          {result !== null && (
-            <div className="mt-4 sm:mt-6 bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 text-center">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Your NU Marks</h3>
-              <div className="text-2xl sm:text-3xl font-bold text-slate-300 mb-2">
-                {result.toFixed(2)} / 100
-              </div>
-              <div className="text-sm sm:text-base text-slate-200">
-                Marks calculated based on NU test pattern
-              </div>
-            </div>
-          )}
-
         </div>
       </div>
     </div>

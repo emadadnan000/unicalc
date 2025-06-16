@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, BarChart2, BookOpen, Award, ShieldCheck, Heart, Lightbulb, GraduationCap, Code, ExternalLink, MessageCircle, Linkedin, Github, Instagram, Globe, Smartphone } from 'lucide-react';
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
 
 const FeatureCard = ({ icon: Icon, title, children, delay = 0 }: { icon: React.ElementType, title: string, children: React.ReactNode, delay?: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -144,7 +144,7 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-white mb-3 flex items-center">
-                <MessageCircle className="w-6 h-6 mr-2 text-green-400 animate-bounce" />
+                <FaWhatsapp className="w-6 h-6 mr-2 text-green-400 animate-bounce" />
                 Join Entry Test Group
               </h3>
               <p className="text-gray-300 mb-4 md:mb-0 leading-relaxed">
@@ -152,12 +152,12 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <a 
-              href="https://chat.whatsapp.com/Cat16toNG2FHVNbSuel3FG" 
+              href="https://chat.whatsapp.com/FAr6YQiz3TqAcWgtdqtd7j" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-green-500/30 active:scale-95 whitespace-nowrap group font-semibold"
             >
-              <MessageCircle className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12" />
+              <FaWhatsapp className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12" />
               Join WhatsApp Group
             </a>
           </div>
