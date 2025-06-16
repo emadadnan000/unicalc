@@ -6,6 +6,8 @@ import universities, { University, Program } from '../../data/universities';
 import testPatterns, { UniversityTestPattern } from '../../data/testPatterns';
 import EligibilityTable from '../EligibilityTable';
 import MeritAnalysis from '../MeritAnalysis';
+import NUCalculatorButton from '../calculator/NUCalculatorButton';
+import '../calculator/nu-calculator.css';
 
 type EducationType = 'FSc' | 'A-Level-Immediate' | 'A-Level-GapYear';
 
@@ -203,7 +205,11 @@ const universityData: UniversityData = {
 };
 
 const CalculatorPage: React.FC = () => {
-  const { universityId } = useParams<{ universityId: string }>();
+  const { universityId, programId, section } = useParams<{ 
+    universityId: string; 
+    programId?: string; 
+    section?: string; 
+  }>();
   const [university, setUniversity] = useState<University | null>(null);
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   
@@ -229,13 +235,46 @@ const CalculatorPage: React.FC = () => {
     const uni = universities.find(u => u.id === universityId);
     if (uni) {
       setUniversity(uni);
-      setSelectedProgram(uni.programs[0]);
+      
+      // Handle programId from URL
+      let selectedProg = uni.programs[0];
+      if (programId) {
+        const urlProgram = uni.programs.find(p => p.id === programId);
+        if (urlProgram) {
+          selectedProg = urlProgram;
+        }
+      }
+      setSelectedProgram(selectedProg);
+      
       setFormData(prev => ({
         ...prev,
-        entryTestType: uni.programs[0].testOptions[0]
+        entryTestType: selectedProg.testOptions[0]
       }));
+      
+      // Handle section from URL
+      if (section) {
+        switch (section) {
+          case 'results':
+            setActiveSection('results');
+            break;
+          case 'merit':
+            setShowMerits(true);
+            setActiveSection('');
+            break;
+          case 'pattern':
+            setShowTestPattern(true);
+            setActiveSection('');
+            break;
+          case 'facts':
+            setShowFacts(true);
+            setActiveSection('');
+            break;
+          default:
+            setActiveSection('form');
+        }
+      }
     }
-  }, [universityId]);
+  }, [universityId, programId, section]);
 
   useEffect(() => {
     // Update entry test marks total based on test type
@@ -989,6 +1028,23 @@ const CalculatorPage: React.FC = () => {
                 </div>
                 <p className="text-xs text-gray-400">Contributes {selectedProgram.formula.entryTest * 100}% to your aggregate score</p>
               </div>
+
+              {/* NU Calculator Button - Shows when NU test is selected */}
+              {formData.entryTestType === 'NU' && (
+                <div className="bg-slate-900/30 p-4 rounded-lg border border-slate-500/30">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="flex-1">
+                      <h4 className="text-white font-medium text-sm sm:text-base">NU Test Score Calculator</h4>
+                      <p className="text-gray-300 text-xs sm:text-sm mt-1">
+                        Calculate your detailed NU test marks based on section-wise performance
+                      </p>
+                    </div>
+                    <div className="w-full sm:w-auto">
+                      <NUCalculatorButton variant="primary" className="w-full sm:w-auto" />
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Calculate Button */}
               <div className="flex justify-center mt-4 sm:mt-8">

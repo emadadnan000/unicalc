@@ -1,5 +1,5 @@
 // import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import Header from './components/common/Header';
@@ -20,6 +20,14 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/calculator/:universityId" element={<CalculatorPage />} />
+            <Route path="/calculator/:universityId/:programId" element={<CalculatorPage />} />
+            <Route path="/calculator/:universityId/:programId/:section" element={<CalculatorPage />} />
+            <Route path="/calculator" element={<Navigate to="/" replace />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/universities" element={<Navigate to="/" replace />} />
+            <Route path="/nu-calculator" element={<Navigate to="/" replace />} />
+            {/* Catch-all route for 404s - redirect to home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
       </main>
