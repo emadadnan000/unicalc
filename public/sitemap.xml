@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<!-- Homepage -->
+<url>
+  <loc>https://unicalc.vercel.app/</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>1.0</priority>
+</url>
+
+<!-- About Page -->
+<url>
+  <loc>https://unicalc.vercel.app/about</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<!-- University Calculator Pages -->
+<url>
+  <loc>https://unicalc.vercel.app/calculator/fast</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/nust</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/itu</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/comsats</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/giki</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/pieas</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/qau</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/pu</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/ned</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/nutech</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/air</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/bahria</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/uet</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/iiu</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/ist</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<!-- Program-specific pages for major universities -->
+<url>
+  <loc>https://unicalc.vercel.app/calculator/fast/cs</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/fast/eng</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/nust/cs</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/nust/eng</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://unicalc.vercel.app/calculator/itu/cs</loc>
+  <lastmod>2024-12-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+</urlset> 

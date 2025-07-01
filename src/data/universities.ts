@@ -709,16 +709,16 @@ const universities: University[] = [
         name: "Engineering",
         testOptions: ["NU", "NAT", "SAT"],
         formula: {
-          matriculation: 0.10,
-          intermediate: 0.40,
-          entryTest: 0.50
+          matriculation: 0.17,
+          intermediate: 0.50,
+          entryTest: 0.33
         },
         minimumCriteria: {
           matriculation: 60,
           intermediate: 60,
           entryTest: 50
         },
-        notes: "Includes Electrical, Electronic, and Civil Engineering programs.",
+        notes: "Includes Electrical, Electronic, and Civil Engineering programs. For FSc students: Matric (17%) + Intermediate (50%) + Entry Test (33%).",
         admissionChances: [
           { min: 85, max: 100, rating: 'Very High', comment: 'Excellent chances in all campuses' },
           { min: 75, max: 84.99, rating: 'High', comment: 'Good chances in most campuses' },
@@ -1439,16 +1439,16 @@ const universities: University[] = [
         name: "Computer Science",
         testOptions: ["ITU Admission Test", "SAT-I", "NTS"],
         formula: {
-          matriculation: 0.00,
-          intermediate: 0.40,
-          entryTest: 0.60
+          matriculation: 0.15,
+          intermediate: 0.35,
+          entryTest: 0.50
         },
         minimumCriteria: {
           matriculation: 60,
           intermediate: 60,
           entryTest: 50
         },
-        notes: "All departments, including Computer Science and Business, adhere to the same aggregate formula. The remaining 20% is based on interview performance.",
+        notes: "All departments, including Computer Science and Business, follow the admission formula: Matric (15%) + Intermediate (35%) + Entry Test (50%). Additional weightage may be given for interview performance.",
         admissionChances: [
           { min: 90, max: 100, rating: 'Very High', comment: 'Excellent chances for admission' },
           { min: 85, max: 89.99, rating: 'High', comment: 'Good chances for admission' },

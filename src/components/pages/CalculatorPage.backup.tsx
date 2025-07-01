@@ -264,23 +264,26 @@ const CalculatorPage: React.FC = () => {
               <div className="space-y-3">
                 <label className="block text-sm font-medium text-gray-300">Education System</label>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  {['FSc', 'A-Level'].map(type => (
-                    <button
-                      key={type}
-                      onClick={() => handleInputChange('educationType', null, type as EducationType)}
-                      className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded transition-all duration-300 transform hover:scale-105 ${
-                        formData.educationType === type 
-                          ? 'bg-electric-blue text-deep-space shadow-lg' 
-                          : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue'
-                      }`}
-                    >
-                      {type}
-                    </button>
-                  ))}
+                  {(() => {
+                    const options = university?.id === "fast" ? ['FSc', 'A-Level'] : ['FSc'];
+                    return options.map(type => (
+                      <button
+                        key={type}
+                        onClick={() => handleInputChange('educationType', null, type as EducationType)}
+                        className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded transition-all duration-300 transform hover:scale-105 ${
+                          formData.educationType === type 
+                            ? 'bg-electric-blue text-deep-space shadow-lg' 
+                            : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue'
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ));
+                  })()}
                 </div>
-                {formData.educationType === 'A-Level' && (
+                {university?.id === "fast" && formData.educationType === 'A-Level' && (
                   <p className="text-xs text-electric-blue italic">
-                    {/* A-Level students receive a 10% bonus in aggregate calculation */}
+                    {/* A-Level students receive special calculation for FAST */}
                   </p>
                 )}
               </div>
@@ -889,11 +892,11 @@ const CalculatorPage: React.FC = () => {
                   )}
                   {university?.id === "itu" && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-400">Interview (20%):</span>
+                      <span className="text-gray-400">Interview (Additional):</span>
                       <span className="text-gray-300 font-medium">Not included in this calculator</span>
                     </div>
                   )}
-                  {formData.educationType === 'A-Level' && university?.id !== "nust" && (
+                  {university?.id === "fast" && formData.educationType === 'A-Level' && (
                     <div className="flex justify-between text-sm">
                       {/* <span className="text-gray-400">A-Level Bonus (10%):</span> */}
                       {/* <span className="text-green-400 font-medium">Applied</span> */}
@@ -908,10 +911,10 @@ const CalculatorPage: React.FC = () => {
                   {university.id === "nust" && formData.educationType === 'A-Level' ? (
                     <>Based on the {university.name} admission formula for A-Level students: O-Level (25%) + A-Level ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   ) : (
-                    <>Based on the {university.name} admission formula: {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} ({selectedProgram.formula.matriculation * 100}%) + {formData.educationType} ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
+                    <>Based on the {university.name} admission formula: Matric ({selectedProgram.formula.matriculation * 100}%) + Intermediate ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   )}
-                  {formData.educationType === 'A-Level' && university.id !== "nust" && ' with 10% additional weightage for A-Level students.'}
-                  {university.id === "itu" && ' plus 20% weightage for interview performance.'}
+                  {university?.id === "fast" && formData.educationType === 'A-Level' && ' with 10% additional weightage for A-Level students.'}
+                  {university.id === "itu" && ' with additional weightage for interview performance.'}
                 </p>
               </div>
 

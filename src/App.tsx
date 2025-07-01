@@ -8,10 +8,12 @@ import HomePage from './components/pages/HomePage';
 import AboutPage from './components/pages/AboutPage';
 import CalculatorPage from './components/pages/CalculatorPage';
 import StarryBackground from './components/common/StarryBackground';
+import SEOHead from './components/SEOHead';
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen relative overflow-hidden">
+      <SEOHead />
       <StarryBackground />
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">

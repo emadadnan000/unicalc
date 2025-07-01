@@ -350,8 +350,7 @@ const HomePage: React.FC = () => {
                   textShadow: 'none'
                 }}
               >
-                Your comprehensive platform for university admissions in Pakistan. Calculate aggregates, 
-                explore test patterns, and make informed decisions about your academic future.
+                Your comprehensive platform for university admissions in Pakistan. Calculate merit for FAST, NUST, ITU, COMSATS & 15+ top universities. Get accurate aggregate calculations, explore CS and Engineering programs, and make informed decisions about your academic future with our free admission calculator.
               </p>
 
             </div>
@@ -536,21 +535,230 @@ const HomePage: React.FC = () => {
             </>
           )}
 
+          {/* SEO Benefits Section */}
+          <div className="mt-20 mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Why Choose Our University <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Calculator Pakistan</span>?
+              </h2>
+              <p className="text-lg text-gray-300 max-w-4xl mx-auto">
+                Get accurate merit calculations for Pakistan's top universities with our comprehensive admission calculator. 
+                Trusted by thousands of students for FAST, NUST, ITU, COMSATS and more.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {/* Feature 1 */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">Accurate FAST Calculator</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Calculate FAST-NUCES admission merit for Computer Science, Engineering & Business programs. 
+                  Updated formulas for 2025 admissions with A-Level and FSc support.
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">NUST & ITU Merit Calculator</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Calculate NUST NET and ITU admission merit with precise aggregate calculations. 
+                  Perfect for Engineering and CS programs with updated merit formulas.
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">All Pakistani Universities</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Complete calculator for COMSATS, GIKI, PIEAS, UET, QAU, PU and more. 
+                  Free merit calculator for 15+ top universities in Pakistan.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* University Specific SEO Content */}
+          <div className="mt-20 mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Top University Calculators</span> in Pakistan
+              </h2>
+              <p className="text-lg text-gray-300 max-w-4xl mx-auto">
+                Calculate admission merit for Pakistan's most prestigious universities. Get accurate aggregate calculations 
+                for Computer Science, Engineering, and other programs.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {/* FAST University */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-cyan-400">FAST-NUCES Calculator 2025</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Calculate FAST University admission merit for Computer Science, Software Engineering, and Electrical Engineering programs. 
+                  Our FAST calculator includes updated formulas for both A-Level and FSc students with accurate aggregate predictions.
+                </p>
+                <ul className="text-gray-300 space-y-2 mb-6">
+                  <li>• CS Program: Matric (10%) + FSc/A-Level (40%) + Entry Test (50%)</li>
+                  <li>• Engineering: Matric (17%) + FSc (50%) + Entry Test (33%)</li>
+                  <li>• Business Programs: Different merit calculation formulas</li>
+                  <li>• A-Level support with equivalent grade conversion</li>
+                </ul>
+                <button 
+                  onClick={() => window.location.href = '/calculator/fast'}
+                  className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300"
+                >
+                  FAST Calculator →
+                </button>
+              </div>
+
+              {/* NUST University */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-blue-400">NUST Merit Calculator 2025</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Calculate NUST admission merit for Engineering and Computing programs using NET entry test scores. 
+                  Our NUST calculator provides accurate aggregate calculations for all NUST campuses and programs.
+                </p>
+                <ul className="text-gray-300 space-y-2 mb-6">
+                  <li>• Engineering Programs: Comprehensive merit calculation</li>
+                  <li>• Computer Science: SEECS campus calculator</li>
+                  <li>• NET Score Integration: Accurate test score weighting</li>
+                  <li>• Multiple campus support across Pakistan</li>
+                </ul>
+                <button 
+                  onClick={() => window.location.href = '/calculator/nust'}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300"
+                >
+                  NUST Calculator →
+                </button>
+              </div>
+
+              {/* ITU University */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-green-400">ITU Calculator Pakistan</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Calculate ITU (Information Technology University) admission merit for Computer Science and IT programs. 
+                  Updated ITU calculator with new merit formula: Matric (15%) + FSc (35%) + Entry Test (50%).
+                </p>
+                <ul className="text-gray-300 space-y-2 mb-6">
+                  <li>• Computer Science Programs: Lahore & other campuses</li>
+                  <li>• Data Science: Specialized program calculator</li>
+                  <li>• Updated 2025 Merit Formula: 15-35-50 weightage</li>
+                  <li>• Free ITU aggregate calculation</li>
+                </ul>
+                <button 
+                  onClick={() => window.location.href = '/calculator/itu'}
+                  className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300"
+                >
+                  ITU Calculator →
+                </button>
+              </div>
+
+              {/* COMSATS University */}
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-purple-400">COMSATS Merit Calculator</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  Calculate COMSATS University Islamabad (CUI) admission merit for CS, Engineering, and other programs. 
+                  Free COMSATS calculator for all campuses including Islamabad, Lahore, Karachi, and more.
+                </p>
+                <ul className="text-gray-300 space-y-2 mb-6">
+                  <li>• All COMSATS Campuses: Islamabad, Lahore, Karachi</li>
+                  <li>• CS & Engineering: Complete merit calculation</li>
+                  <li>• Business Programs: Separate calculator available</li>
+                  <li>• CUI Entry Test: Integrated score calculation</li>
+                </ul>
+                <button 
+                  onClick={() => window.location.href = '/calculator/comsats'}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300"
+                >
+                  COMSATS Calculator →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ Section for SEO */}
+          <div className="mt-20 mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Frequently Asked <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Questions</span>
+              </h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                Common questions about university admission calculators in Pakistan
+              </p>
+            </div>
+            
+            <div className="max-w-4xl mx-auto space-y-6">
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">How accurate is the FAST calculator?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Our FAST-NUCES calculator uses the official merit formula provided by the university. 
+                  For Engineering programs, it's Matric (17%) + FSc (50%) + Entry Test (33%). For CS programs, 
+                  it's Matric (10%) + FSc/A-Level (40%) + Entry Test (50%). We update formulas annually.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">Can I calculate merit for A-Level students?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Yes! Our calculator supports both FSc and A-Level students. For FAST University, we provide 
+                  separate options for A-Level immediate and A-Level with gap year. The system automatically 
+                  converts A-Level grades to equivalent percentages for accurate merit calculation.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">Which universities are supported by the calculator?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We support 15+ top Pakistani universities including FAST-NUCES, NUST, ITU, COMSATS, GIKI, 
+                  PIEAS, UET, QAU, Punjab University, NED, AIR University, Bahria University, and more. 
+                  Each university has specific merit formulas for different programs.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">How do I calculate NUST NET merit?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  For NUST, enter your Matric marks, FSc/A-Level marks, and NET entry test score. 
+                  Our NUST calculator automatically applies the correct weightage for different programs. 
+                  Engineering and CS programs have different merit calculation formulas.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">Is the calculator free to use?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Yes, our university admission calculator is completely free! Calculate merit for any Pakistani 
+                  university, get detailed breakdowns, and compare your chances across multiple institutions 
+                  without any charges or registration required.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Enhanced CTA Section */}
           <div className="mt-20 text-center">
             <div className="bg-gradient-to-br from-slate-800/70 to-slate-700/60 backdrop-blur-xl border border-slate-600/50 rounded-3xl p-8 sm:p-12 lg:p-16 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10 group">
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 group-hover:text-cyan-300 transition-colors duration-300">
-                Ready to Start Your Journey?
+                Start Calculating Your University Merit Today
               </h3>
               <p className="text-gray-300 mb-8 max-w-3xl mx-auto text-lg sm:text-xl leading-relaxed">
-                Join thousands of students who have successfully navigated their university 
-                admissions with our comprehensive tools and guidance.
+                Join thousands of Pakistani students who have successfully calculated their admission merit 
+                for FAST, NUST, ITU, COMSATS and other top universities. Get accurate predictions and plan your academic future.
               </p>
               <button 
                 onClick={handleGetStarted}
                 className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 px-10 sm:px-12 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/30 hover:-translate-y-2 hover:scale-105 text-lg"
               >
-                Get Started Today
+                Calculate Merit Now - Free
               </button>
             </div>
           </div>

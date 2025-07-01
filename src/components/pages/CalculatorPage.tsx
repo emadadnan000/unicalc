@@ -248,7 +248,11 @@ const CalculatorPage: React.FC = () => {
       
       setFormData(prev => ({
         ...prev,
-        entryTestType: selectedProg.testOptions[0]
+        entryTestType: selectedProg.testOptions[0],
+        // Reset education type to FSc if switching to non-FAST university with A-Level selected
+        educationType: uni.id !== "fast" && (prev.educationType === 'A-Level-Immediate' || prev.educationType === 'A-Level-GapYear') 
+          ? 'FSc' 
+          : prev.educationType
       }));
       
       // Handle section from URL
@@ -886,27 +890,34 @@ const CalculatorPage: React.FC = () => {
               <div className="space-y-2 sm:space-y-3">
                 <label className="block text-xs sm:text-sm font-medium text-gray-300">Education System</label>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  {[
-                    { value: 'FSc', label: 'FSc' },
-                    { value: 'A-Level-Immediate', label: 'A-Levels (Immediate)' },
-                    { value: 'A-Level-GapYear', label: 'A-Levels (Gap Year)' }
-                  ].map(({ value, label }) => (
-                    <button
-                      key={value}
-                      onClick={() => handleInputChange('educationType', null, value as EducationType)}
-                      className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded transition-all duration-300 transform hover:scale-105 ${
-                        formData.educationType === value 
-                          ? 'bg-electric-blue text-deep-space shadow-lg' 
-                          : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue'
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
+                  {(() => {
+                    const baseOptions = [{ value: 'FSc', label: 'FSc' }];
+                    const aLevelOptions = [
+                      { value: 'A-Level-Immediate', label: 'A-Levels (Immediate)' },
+                      { value: 'A-Level-GapYear', label: 'A-Levels (Gap Year)' }
+                    ];
+                    
+                    // Only show A-Level options for FAST university
+                    const options = university?.id === "fast" ? [...baseOptions, ...aLevelOptions] : baseOptions;
+                    
+                    return options.map(({ value, label }) => (
+                      <button
+                        key={value}
+                        onClick={() => handleInputChange('educationType', null, value as EducationType)}
+                        className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded transition-all duration-300 transform hover:scale-105 ${
+                          formData.educationType === value 
+                            ? 'bg-electric-blue text-deep-space shadow-lg' 
+                            : 'bg-midnight-blue/70 text-gray-300 hover:bg-midnight-blue'
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    ));
+                  })()}
                 </div>
-                {(formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && (
+                {university?.id === "fast" && (formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && (
                   <p className="text-xs text-electric-blue italic">
-                    {/* A-Level students receive a 10% bonus in aggregate calculation */}
+                    {/* A-Level students receive special calculation for FAST */}
                   </p>
                 )}
               </div>
@@ -939,7 +950,7 @@ const CalculatorPage: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-xs text-gray-400">
-                  {formData.educationType === 'A-Level-Immediate' 
+                  {university?.id === "fast" && formData.educationType === 'A-Level-Immediate' 
                     ? 'Contributes 50% to your aggregate score' 
                     : `Contributes ${selectedProgram.formula.matriculation * 100}% to your aggregate score`
                   }
@@ -974,7 +985,7 @@ const CalculatorPage: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-xs text-gray-400">
-                  {formData.educationType === 'A-Level-Immediate' 
+                  {university?.id === "fast" && formData.educationType === 'A-Level-Immediate' 
                     ? 'Contributes 0% to your aggregate score' 
                     : `Contributes ${selectedProgram.formula.intermediate * 100}% to your aggregate score`
                   }
@@ -1203,7 +1214,7 @@ const CalculatorPage: React.FC = () => {
                   <div className="flex justify-between text-xs sm:text-sm">
                     <span className="text-gray-400">
                       {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} 
-                      {formData.educationType === 'A-Level-Immediate' ? ' (50%)' : 
+                      {university?.id === "fast" && formData.educationType === 'A-Level-Immediate' ? ' (50%)' : 
                        university?.id === "nust" && formData.educationType === 'A-Level-GapYear' ? ' (25%)' : 
                        ` (${selectedProgram.formula.matriculation * 100}%)`}:
                     </span>
@@ -1215,10 +1226,10 @@ const CalculatorPage: React.FC = () => {
                     <span className="text-gray-400">
                       {formData.educationType === 'FSc' 
                         ? 'Intermediate' 
-                        : formData.educationType === 'A-Level-Immediate' 
+                        : university?.id === "fast" && formData.educationType === 'A-Level-Immediate' 
                           ? 'A-Level (Not Counted)' 
                           : 'A-Level'}
-                      {formData.educationType !== 'A-Level-Immediate' && ` (${selectedProgram.formula.intermediate * 100}%)`}:
+                      {!(university?.id === "fast" && formData.educationType === 'A-Level-Immediate') && ` (${selectedProgram.formula.intermediate * 100}%)`}:
                     </span>
                     <span className="text-electric-blue font-medium">
                       {((formData.fscMarks.obtained / formData.fscMarks.total) * 100).toFixed(2)}%
@@ -1227,7 +1238,7 @@ const CalculatorPage: React.FC = () => {
                   {selectedProgram.formula.entryTest > 0 && (
                     <div className="flex justify-between text-xs sm:text-sm">
                       <span className="text-gray-400">
-                        {formData.entryTestType} ({formData.educationType === 'A-Level-Immediate' ? '50' : selectedProgram.formula.entryTest * 100}%):
+                        {formData.entryTestType} ({university?.id === "fast" && formData.educationType === 'A-Level-Immediate' ? '50' : selectedProgram.formula.entryTest * 100}%):
                       </span>
                       <span className="text-electric-blue font-medium">
                         {((formData.entryTestMarks.obtained / formData.entryTestMarks.total) * 100).toFixed(2)}%
@@ -1236,11 +1247,11 @@ const CalculatorPage: React.FC = () => {
                   )}
                   {university?.id === "itu" && (
                     <div className="flex justify-between text-xs sm:text-sm">
-                      <span className="text-gray-400">Interview (20%):</span>
+                      <span className="text-gray-400">Interview (Additional):</span>
                       <span className="text-gray-300 font-medium">Not included in this calculator</span>
                     </div>
                   )}
-                  {(formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && university?.id !== "nust" && (
+                  {university?.id === "fast" && (formData.educationType === 'A-Level-Immediate' || formData.educationType === 'A-Level-GapYear') && (
                     <div className="flex justify-between text-xs sm:text-sm">
                       {/* <span className="text-gray-400">A-Level Bonus (10%):</span> */}
                       {/* <span className="text-green-400 font-medium">Applied</span> */}
@@ -1257,14 +1268,14 @@ const CalculatorPage: React.FC = () => {
               <div className="mt-4 flex items-start gap-2 text-sm p-4 bg-electric-blue/10 rounded-lg border border-electric-blue/30">
                 <Info className="h-5 w-5 flex-shrink-0 text-electric-blue" />
                 <p className="text-gray-300">
-                  {formData.educationType === 'A-Level-Immediate' ? (
+                  {university?.id === "fast" && formData.educationType === 'A-Level-Immediate' ? (
                     <>Based on the {university.name} admission formula for A-Levels (Immediate): O-Level (50%) + {formData.entryTestType} (50%)</>
                   ) : university.id === "nust" && formData.educationType === 'A-Level-GapYear' ? (
                     <>Based on the {university.name} admission formula for A-Level students: O-Level (25%) + A-Level ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   ) : (
-                    <>Based on the {university.name} admission formula: {formData.educationType === 'FSc' ? 'Matric' : 'O-Level'} ({selectedProgram.formula.matriculation * 100}%) + {formData.educationType === 'A-Level-GapYear' ? 'A-Level' : 'Intermediate'} ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
+                    <>Based on the {university.name} admission formula: Matric ({selectedProgram.formula.matriculation * 100}%) + Intermediate ({selectedProgram.formula.intermediate * 100}%) + {formData.entryTestType} ({selectedProgram.formula.entryTest * 100}%)</>
                   )}
-                  {university.id === "itu" && ' plus 20% weightage for interview performance.'}
+                  {university.id === "itu" && ' with additional weightage for interview performance.'}
                 </p>
               </div>
 
