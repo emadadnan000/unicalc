@@ -133,7 +133,7 @@ const Header: React.FC = () => {
                 About
               </Link>
               <a 
-                href="https://chat.whatsapp.com/FAr6YQiz3TqAcWgtdqtd7j" 
+                href="https://chat.whatsapp.com/K90KgqZ8mzFBt9ISlxB4l3?mode=ac_t" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="nav-link py-3 px-4 hover:bg-blue-900/30 rounded-lg transition-colors flex items-center"

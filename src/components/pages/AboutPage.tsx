@@ -152,7 +152,7 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <a 
-              href="https://chat.whatsapp.com/FAr6YQiz3TqAcWgtdqtd7j" 
+              href="https://chat.whatsapp.com/K90KgqZ8mzFBt9ISlxB4l3?mode=ac_t" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-green-500/30 active:scale-95 whitespace-nowrap group font-semibold"
