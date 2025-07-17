@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               <Mail size={18} />
             </a> */}
             <a 
-              href="https://chat.whatsapp.com/K90KgqZ8mzFBt9ISlxB4l3?mode=ac_t" 
+              href="https://chat.whatsapp.com/Lu0oFatcabjEJWBSVRbEIN?mode=r_t" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-green-500 transition-colors duration-300 transform hover:scale-110"

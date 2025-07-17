@@ -77,7 +77,7 @@ const Header: React.FC = () => {
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/about" className="nav-link">About</Link>
             <a 
-              // href="https://chat.whatsapp.com/your-group-link" 
+              // href="https://chat.whatsapp.com/Lu0oFatcabjEJWBSVRbEIN?mode=r_t" 
               // target="_blank" 
               // rel="noopener noreferrer" 
               // className="px-4 py-2 bg-electric-blue text-deep-space rounded-full hover:bg-soft-cyan transition-all duration-300 transform hover:scale-105 inline-flex items-center"
@@ -133,7 +133,7 @@ const Header: React.FC = () => {
                 About
               </Link>
               <a 
-                href="https://chat.whatsapp.com/K90KgqZ8mzFBt9ISlxB4l3?mode=ac_t" 
+                href="https://chat.whatsapp.com/Lu0oFatcabjEJWBSVRbEIN?mode=r_t" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="nav-link py-3 px-4 hover:bg-blue-900/30 rounded-lg transition-colors flex items-center"
