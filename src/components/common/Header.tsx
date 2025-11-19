@@ -75,6 +75,7 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">Home</Link>
+            <Link to="/schedule" className="nav-link">Schedule</Link>
             <Link to="/about" className="nav-link">About</Link>
             <a 
               // href="https://chat.whatsapp.com/Lu0oFatcabjEJWBSVRbEIN?mode=r_t" 
@@ -124,6 +125,13 @@ const Header: React.FC = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
+              </Link>
+              <Link 
+                to="/schedule" 
+                className="nav-link py-3 px-4 hover:bg-blue-900/30 rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Schedule
               </Link>
               <Link 
                 to="/about" 

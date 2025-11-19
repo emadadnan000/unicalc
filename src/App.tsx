@@ -6,6 +6,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import HomePage from './components/pages/HomePage';
 import AboutPage from './components/pages/AboutPage';
+import SchedulePage from './components/pages/SchedulePage';
 import CalculatorPage from './components/pages/CalculatorPage';
 import StarryBackground from './components/common/StarryBackground';
 import SEOHead from './components/SEOHead';
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/schedule" element={<SchedulePage />} />
             <Route path="/calculator/:universityId" element={<CalculatorPage />} />
             <Route path="/calculator/:universityId/:programId" element={<CalculatorPage />} />
             <Route path="/calculator/:universityId/:programId/:section" element={<CalculatorPage />} />
